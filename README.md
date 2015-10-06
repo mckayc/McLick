@@ -1,0 +1,2 @@
+# McLick
+Mouse Click Highlighter
