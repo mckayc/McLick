@@ -1,16 +1,20 @@
 {
-  "name": "Mouse XY",
+  "manifest_version": 2,
+  "name": "McLick",
   "version": "2.1",
   "icons": {"64" : "icon.png"},
   "permissions": [
-    "activeTab"
+    "tabs", "*://*/*"
   ],
   "background": {
     "scripts": ["change.js","content_script.js"],
-    "persistent": false
+    "persistent": false,
+    "matches": ["*://*/*"],
+    "css": ["triangle.css"]
   },
   "browser_action": {
-    "default_title": "Shows the X and Y coordinates of the mouse click."
+    "default_title": "Shows the X and Y coordinates of the mouse click.",
+    "default_icon": "triangle.png"
   },
-  "manifest_version": 2
+  "web_accessible_resources": ["triangle.png"]
 }
