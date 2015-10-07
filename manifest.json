@@ -1,12 +1,16 @@
 {
-  "name": "Hello World!",
-  "description": "My first Chrome App.",
-  "version": "0.1",
-  "manifest_version": 2,
-  "app": {
-    "background": {
-      "scripts": ["background.js"]
-    }
+  "name": "Mouse XY",
+  "version": "2.1",
+  "icons": {"64" : "icon.png"},
+  "permissions": [
+    "activeTab"
+  ],
+  "background": {
+    "scripts": ["change.js","content_script.js"],
+    "persistent": false
   },
-  "icons": { "16": "calculator-16.png", "128": "calculator-128.png" }
+  "browser_action": {
+    "default_title": "Shows the X and Y coordinates of the mouse click."
+  },
+  "manifest_version": 2
 }
