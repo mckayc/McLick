@@ -1,10 +1,16 @@
 $('body').append("<div id='ext-mouse-cursor'></div>");
 
+var follower = $("#ext-mouse-cursor");
 
-function mouse_move(e){
-    var follower = $("#ext-mouse-cursor");
+function mouseMove(e){
     var x = e.clientX-follower.outerWidth()/2;
     var y = e.clientY-follower.outerHeight()/2;
+
+
+    	follower.css({
+    			'top':y,
+    			'left':x,
+    		});
 
 
     chrome.storage.sync.get(null, function(response) {
@@ -14,41 +20,39 @@ function mouse_move(e){
           "pointer-events": 'none',
           "position": "fixed",
           "opacity": "0.5",
-          "left": x,
-          "top": y,
-          //"border": "7px solid #29aae1",
+          "transition": "opacity 0.2s",
           "border-radius": "50%",
           "width": response.circle_size+'px',
           "height": response.circle_size+'px',
-          "border": (response.circle_border_size*2)+'px solid #29aae1',
           "background": response.favoriteColor
       });
+
+      function mouseDown(e){
+        follower.css({
+          'opacity':1,
+          "background-color": "transparent",
+          "border": response.circle_border_size + 'px solid #29aae1'
+        })
+      }
+
+
+      $(window).mousedown(mouseDown);
+      $(window).mouseup(mouseUp);
+      $(window).mousemove(mouseMove);
+
+
     });
 }
 
 
-//width: 50px;
-//height: 50px;
-//border-radius: 50%;
-
-
-//transition: opacity 0.2s;
-//border: 7px solid #29aae1;
-//background-color: transparent;
-
-
-
-
-
-
 function ext_on(){
   console.log("On");
-  window.addEventListener('mousemove',mouse_move, false);
+  window.addEventListener('mousemove',mouseMove, false);
 }
 
 function ext_off(){
   console.log("Off");
-  window.removeEventListener("mousemove", mouse_move, false);
+  window.removeEventListener("mousemove", mouseMove, false);
   var follower = $("#ext-mouse-cursor").css({
     'display': 'None'
   });
