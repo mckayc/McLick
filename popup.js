@@ -2,17 +2,20 @@ $('body').append("<div id='ext-mouse-cursor'></div>");
 
 
 function mouse_move(e){
-    var elem = $("#ext-mouse-cursor");
+    var follower = $("#ext-mouse-cursor");
+    var x = e.clientX-follower.outerWidth()/2;
+    var y = e.clientY-follower.outerHeight()/2;
+
 
     chrome.storage.sync.get(null, function(response) {
-     elem.css({
+     follower.css({
           'display': 'block',
           'z-index': '99999999',
           "pointer-events": 'none',
           "position": "fixed",
           "opacity": "0.5",
-          "left": e.x-(response.circle_border_size/2),
-          "top": e.y-(response.circle_border_size/2),
+          "left": x,
+          "top": y,
           //"border": "7px solid #29aae1",
           "border-radius": "50%",
           "width": response.circle_size+'px',
@@ -46,7 +49,7 @@ function ext_on(){
 function ext_off(){
   console.log("Off");
   window.removeEventListener("mousemove", mouse_move, false);
-  var elem = $("#ext-mouse-cursor").css({
+  var follower = $("#ext-mouse-cursor").css({
     'display': 'None'
   });
 
