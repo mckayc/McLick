@@ -2,9 +2,11 @@
 function save_options() {
     var color = document.getElementById('color').value;
     var circle_size = document.getElementById('circle_size').value;
+    var circle_border_size = document.getElementById('circle_border_size').value;
     chrome.storage.sync.set({
         favoriteColor: color,
-        circle_size: circle_size
+        circle_size: circle_size,
+        circle_border_size: circle_border_size
     }, function() {
         // Update status to let user know options were saved.
         var status = document.getElementById('status');
@@ -21,10 +23,12 @@ function restore_options() {
     // Use default value color = 'red' and likesColor = true.
     chrome.storage.sync.get({
         favoriteColor: 'none',
-        circle_size: '20'
+        circle_size: '20',
+        circle_border_size: '5'
     }, function(items) {
         document.getElementById('color').value = items.favoriteColor;
-        document.getElementById('circle_size').value = items.circle_size;s
+        document.getElementById('circle_size').value = items.circle_size;
+        document.getElementById('circle_border_size').value = items.circle_border_size;
     });
 }
 document.addEventListener('DOMContentLoaded', restore_options);

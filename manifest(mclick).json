@@ -1,6 +1,6 @@
 {
-    "name": "Mouse Thing",
-    "description": "Place a circle on the screen under the mouse cursor. Mainly for the Google Chromecast.",
+    "name": "McLick",
+    "description": "Mouse cursor and click highlighter to be used for visual help in recording screencasts.",
     "version": "0.1",
     "permissions": [
         "http://*/*", "https://*/*",
@@ -16,7 +16,7 @@
     "manifest_version": 2,
     "content_scripts": [{
         "matches": ["http://*/*", "https://*/*"],
-        "js": ["jquery-2.1.3.min.js", "popup.js"],
+        "js": ["jquery-1.11.3.min.js", "popup.js"],
         "all_frames": true
     }],
     "options_page": "options.html"
