@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head><title>Options</title></head>
+<script type="text/javascript" src="jscolor/jscolor.js"></script>
+
+<style>
+     body {
+       font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+       font-size: 100%;
+     }
+     #popup {
+       /* avoid an excessively wide status text */
+       white-space: pre;
+       text-overflow: ellipsis;
+       overflow: hidden;
+       max-width: 400px;
+     }
+   </style>
+
+<body>
+  <div id="popup">
+
+<label>Choose a Highlight Color:</label>
+<input id='color' class='color' value='' />
+
+<label>Highlight Circle Size:</label>
+<input id='circle_size' type='text' value='' />
+
+<label>Choose a Border Color:</label>
+<input id='bordercolor' class='bordercolor' value='' />
+
+<label>Circle Border Size:</label>
+<input id='circle_border_size' type='text' value='' />
+
+<div id="status"></div>
+<hr />
+<button id="save">Save</button>
+
+<script src="userOptions.js"></script>
+
+  </div>
+</body>
+</html>

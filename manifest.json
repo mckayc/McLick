@@ -1,14 +1,19 @@
 {
     "name": "McLick",
-    "description": "This is a test.",
+    "description": "This is an offline Google Chrome extention. This is extension will highlight your mouse cursor and your mouse clicks.",
     "version": "0.1",
     "permissions": [
         "http://*/*", "https://*/*",
         "storage"
     ],
+
+    "icons": { "16": "icon16.png",
+               "48": "icon48.png",
+              "128": "icon128.png" },
+
     "background": {
         "persistent": true,
-        "scripts": ["popup.js", "background.js"]
+        "scripts": ["highlight.js", "onOffToggle.js"]
     },
     "browser_action": {
         "default_icon": "off.png"
@@ -16,8 +21,8 @@
     "manifest_version": 2,
     "content_scripts": [{
         "matches": ["http://*/*", "https://*/*"],
-        "js": ["jquery-1.11.3.min.js", "popup.js"],
+        "js": ["jquery-1.11.3.min.js", "highlight.js"],
         "all_frames": true
     }],
-    "options_page": "options.html"
+    "options_page": "userOptions.html"
 }

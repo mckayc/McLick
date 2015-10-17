@@ -12,7 +12,6 @@ function mouseMove(e){
     			'left':x,
     		});
 
-
     chrome.storage.sync.get(null, function(response) {
      follower.css({
           'display': 'block',
@@ -24,7 +23,7 @@ function mouseMove(e){
           "border-radius": "50%",
           "width": response.circle_size+'px',
           "height": response.circle_size+'px',
-          "background": response.favoriteColor
+          "background": "#" + response.favoriteColor
       });
 
       function mouseDown(e){
@@ -34,6 +33,15 @@ function mouseMove(e){
           "border": response.circle_border_size + 'px solid #29aae1'
         })
       }
+
+  //  The extension runs to a crawl and dies when bollow code is live.
+
+  //    function mouseUp(e){
+  //      follower.css({
+  //        'opacity':0.5,
+  //        'border-color':'#29aae1',
+  //      });
+  //    }
 
 
       $(window).mousedown(mouseDown);
