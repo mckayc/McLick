@@ -56,9 +56,9 @@ function mouseUp(e){
   follower.offset(offset);
 
   follower.css({
-    'opacity':'0.5',
+    
     "background-color": "#" + favoriteColor,
-    "border":"none"
+    "border": circleBorderSize + 'px solid #FF00D4',
   });
 }
 
