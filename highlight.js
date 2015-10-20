@@ -56,7 +56,7 @@ function mouseUp(e){
   follower.offset(offset);
 
   follower.css({
-    
+
     "background-color": "#" + favoriteColor,
     "border": circleBorderSize + 'px solid #FF00D4',
   });

@@ -1,37 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head><title>Options</title></head>
-<script type="text/javascript" src="jscolor/jscolor.js"></script>
+<head><title>Options</title>
 
-<style>
-     body {
-       font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
-       font-size: 100%;
-     }
-     #popup {
-       /* avoid an excessively wide status text */
-       white-space: pre;
-       text-overflow: ellipsis;
-       overflow: hidden;
-       max-width: 400px;
-     }
-   </style>
+  <link rel='spectrum/stylesheet' href='spectrum.css' />
+
+  <script type='text/javascript' src='jscolor/jscolor.js'></script>
+
+
+  <link rel="stylesheet" type="text/css" href="spectrum.css">
+  <link rel="stylesheet" type="text/css" href="docs/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="docs/docs.css">
+  <script type="text/javascript" src="docs/jquery-1.9.1.js"></script>
+  <script type="text/javascript" src="spectrum.js"></script>
+  <script type='text/javascript' src='docs/toc.js'></script>
+  <script type='text/javascript' src='docs/docs.js'></script>
+
+
+</head>
+
+
+
 
 <body>
   <div id="popup">
 
 <label>Choose a Highlight Color:</label>
 <input id='color' class='color' value='' />
-
+<br /><br />
 <label>Highlight Circle Size:</label>
-<input id='circle_size' type='text' value='' />
-
+<input id='circle_size' type='range' min='0' max='350' step='1' value='' />
+<br /><br />
 <label>Choose a Border Color:</label>
-<input id='bordercolor' class='bordercolor' value='' />
+<input type ='text' id='bordercolor' class='bordercolor' value='' />
+<br /><br />
+<input type='text' name='borderColor' id='showAlpha' value='' />
 
+
+<br /><br />
 <label>Circle Border Size:</label>
 <input id='circle_border_size' type='text' value='' />
-
+<br /><br />
 <div id="status"></div>
 <hr />
 <button id="save">Save</button>
