@@ -5,6 +5,7 @@ var mouseDownHighlight = $("#ext-mouse-cursor");
 
 
 var circleSize = 0;
+var mouseDownSize = 0;
 var circleBorderSize = 0;
 var favoriteColor = '000000';
 var mouseDownColor = '000000';
@@ -17,6 +18,7 @@ function mouseMove(e){
 
   chrome.storage.sync.get(null, function(response) {
     circleSize = parseInt(response.circleSize, 10);
+    mouseDownSize = parseInt(response.mouseDownSize, 10);
     circleBorderSize = parseInt(response.circleBorderSize, 10);
     favoriteColor = response.favoriteColor;
     mouseDownColor = response.mouseDownColor;
@@ -52,7 +54,7 @@ function mouseDown(e){
   var y = e.clientY-mouseDownHighlight.outerHeight()/2;
 
   chrome.storage.sync.get(null, function(response) {
-    circleSize = parseInt(response.circleSize, 10);
+    mouseDownSize = parseInt(response.mouseDownSize, 10);
     circleBorderSize = parseInt(response.circleBorderSize, 10);
     favoriteColor = response.favoriteColor;
     mouseDownColor = response.mouseDownColor;
@@ -66,8 +68,8 @@ function mouseDown(e){
          "opacity": "0.5",
          "transition": "opacity 0.2s",
          "border-radius": "50%",
-         "width": circleSize+'px',
-         "height": circleSize+'px',
+         "width": mouseDownSize+'px',
+         "height": mouseDownSize+'px',
          "border":"none",
          "background-color": "#" + mouseDownColor
      });

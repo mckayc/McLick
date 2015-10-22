@@ -5,12 +5,15 @@ function save_options() {
 
 
     var circleSize = document.getElementById('circle_size').value;
+    var mouseDownSize = document.getElementById('mouseDownSize').value;
+
     var circleBorderSize = document.getElementById('circle_border_size').value;
 
     chrome.storage.sync.set({
         favoriteColor: color,
         mouseDownColor: mouseDownColor,
         circleSize: circleSize,
+        mouseDownSize: mouseDownSize,
         circleBorderSize: circleBorderSize
     }, function() {
         // Update status to let user know options were saved.
@@ -30,11 +33,13 @@ function restore_options() {
         favoriteColor: 'none',
         mouseDownColor: 'none',
         circleSize: '20',
+        mouseDownSize: '10',
         circleBorderSize: '5'
     }, function(items) {
         document.getElementById('color').value = items.favoriteColor;
         document.getElementById('mouseDownColor').value = items.mouseDownColor;
         document.getElementById('circle_size').value = items.circleSize;
+        document.getElementById('mouseDownSize').value = items.mouseDownSize;
         document.getElementById('circle_border_size').value = items.circleBorderSize;
     });
 }
