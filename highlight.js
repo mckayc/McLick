@@ -3,16 +3,16 @@ $('body').append("<div id='ext-mouse-cursor'></div>");
 var mouseMoveHighlight = $("#ext-mouse-cursor");
 var mouseDownHighlight = $("#ext-mouse-cursor");
 
+
 var mouseMoveColor = '000000';
-var mouseDownColor = '000000';
-
-var mouseMoveBorderColor = '000000';
-
-
 var mouseMoveSize = 0;
-var mouseDownSize = 0;
+var mouseMoveBorderColor = '000000';
 var mouseMoveBorderSize = 0;
 
+var mouseDownColor = '000000';
+var mouseDownSize = 0;
+var mouseDownBorderColor = '000000';
+var mouseDownBorderSize = 0;
 
 
 
@@ -21,14 +21,17 @@ function mouseMove(e){
   var y = e.clientY-mouseMoveHighlight.outerHeight()/2;
 
   chrome.storage.sync.get(null, function(response) {
+    // mouseMoveColor = response.mouseMoveColor;
+    console.log(response);
+    mouseMoveColor = response.mouseRgba;
     mouseMoveSize = parseInt(response.mouseMoveSize, 10);
-    mouseDownSize = parseInt(response.mouseDownSize, 10);
-
     mouseMoveBorderColor = response.mouseMoveBorderColor;
-
     mouseMoveBorderSize = parseInt(response.mouseMoveBorderSize, 10);
-    mouseMoveColor = response.mouseMoveColor;
+
     mouseDownColor = response.mouseDownColor;
+    mouseDownSize = parseInt(response.mouseDownSize, 10);
+    mouseDownBorderColor = response.mouseDownBorderColor;
+    mouseDownBorderSize = parseInt(response.mouseDownBorderSize, 10);
 
 
     mouseMoveHighlight.css({
@@ -36,13 +39,13 @@ function mouseMove(e){
          'z-index': '99999999',
          "pointer-events": 'none',
          "position": "fixed",
-         "opacity": "0.5",
+        //  "opacity": mouseMoveAlpha,
          "transition": "opacity 0.2s",
          "border-radius": "50%",
          "width": mouseMoveSize+'px',
          "height": mouseMoveSize+'px',
          "border":"none",
-         "background-color": "#" + mouseMoveColor
+         "background-color": mouseMoveColor
      });
   });
 
@@ -53,18 +56,20 @@ function mouseMove(e){
 }
 
 
-
-
-
 function mouseDown(e){
   var x = e.clientX-mouseDownHighlight.outerWidth()/2;
   var y = e.clientY-mouseDownHighlight.outerHeight()/2;
 
   chrome.storage.sync.get(null, function(response) {
-    mouseDownSize = parseInt(response.mouseDownSize, 10);
-    mouseMoveBorderSize = parseInt(response.mouseMoveBorderSize, 10);
     mouseMoveColor = response.mouseMoveColor;
+    mouseMoveSize = parseInt(response.mouseMoveSize, 10);
+    mouseMoveBorderColor = response.mouseMoveBorderColor;
+    mouseMoveBorderSize = parseInt(response.mouseMoveBorderSize, 10);
+
     mouseDownColor = response.mouseDownColor;
+    mouseDownSize = parseInt(response.mouseDownSize, 10);
+    mouseDownBorderColor = response.mouseDownBorderColor;
+    mouseDownBorderSize = parseInt(response.mouseDownBorderSize, 10);
 
 
     mouseDownHighlight.css({
@@ -108,7 +113,7 @@ function mouseDown(e){
 
 
 // function mouseDown(e){
-//   var offset = mouseMoveHighlight.offset();
+//   var offset = mouseMoveHighlight.offset();mouseMoveHighlight
 //   offset.top = offset.top - (circleBorderSize/2);
 //   offset.left = offset.left - (circleBorderSize/2);
 //   mouseMoveHighlight.offset(offset);
@@ -122,35 +127,34 @@ function mouseDown(e){
 
 
 
-function mouseUp(e){
-  var offset = mouseMoveHighlight.offset();
-  offset.top = offset.top + (circleBorderSize/2);
-  offset.left = offset.left + (circleBorderSize/2);
-  mouseMoveHighlight.offset(offset);
-
-  mouseMoveHighlight.css({
-
-    "background-color": "#" + mouseMoveColor,
-    "border": circleBorderSize + 'px solid #FF00D4',
-  });
-}
+// function mouseUp(e){
+//   var offset = mouseMoveHighlight.offset();
+//   offset.top = offset.top + (circleBorderSize/2);
+//   offset.left = offset.left + (circleBorderSize/2);
+//   mouseMoveHighlight.offset(offset);
+//
+//   mouseMoveHighlight.css({
+//
+//     "background-color": "#" + mouseMoveColor,
+//     "border": circleBorderSize + 'px solid #FF00D4',
+//   });
+// }
 
 function ext_on() {
   console.log("On");
   $(window).mousedown(mouseDown);
-  $(window).mouseup(mouseUp);
+//  $(window).mouseup(mouseUp);
   $(window).mousemove(mouseMove);
 }
 
 function ext_off() {
   console.log("Off");
   $(window).unbind('mousedown',mouseDown);
-  $(window).unbind('mouseup',mouseUp);
-  $(window).unbind('mousemove',mouseMove);
-  var mouseMoveHighlight = $("#ext-mouse-cursor").css({
+//  $(window).unbind('mousemove',mouseMove);
+  mouseMoveHighlight.css({
     'display': 'none'
   });
-  var mouseDownHighlight = $("#ext-mouse-cursor").css({
+  mouseDownHighlight.css({
     'display': 'none'
   });
 

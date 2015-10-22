@@ -8,8 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
     <meta name="viewport" content="width=1020">
-    
-    
+
+
     <title>spectrum/docs.js at master · bgrins/spectrum</title>
     <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
     <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
@@ -57,14 +57,14 @@
 
     <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github-60348b331fa450b2228c6d7901d9afe1921385ec9f6f544047e84a4073d825c1.css" integrity="sha256-YDSLMx+kULIijG15Admv4ZITheyfb1RAR+hKQHPYJcE=" media="all" rel="stylesheet" />
     <link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github2-9e83ef1ecc7ceba3d66e3033dd980274ecac3fac0bc5b987cf82d42c663f6f8a.css" integrity="sha256-noPvHsx866PWbjAz3ZgCdOysP6wLxbmHz4LULGY/b4o=" media="all" rel="stylesheet" />
-    
-    
-    
+
+
+
 
 
     <meta http-equiv="x-pjax-version" content="ef4817c743444ed4205f254c8a1a8b49">
 
-      
+
   <meta name="description" content="spectrum - The No Hassle JavaScript Colorpicker">
   <meta name="go-import" content="github.com/bgrins/spectrum git https://github.com/bgrins/spectrum.git">
 
@@ -77,9 +77,9 @@
   <body class="logged_in   env-production linux vis-public page-blob">
     <a href="#start-of-content" tabindex="1" class="accessibility-aid js-skip-to-content">Skip to content</a>
 
-    
-    
-    
+
+
+
 
 
 
@@ -123,7 +123,7 @@
           </li>
       </ul>
 
-    
+
 <ul class="header-nav user-nav right" id="user-links">
   <li class="header-nav-item">
       <span class="js-socket-channel js-updatable-content"
@@ -146,7 +146,7 @@
 
     <div class="dropdown-menu-content js-menu-content">
       <ul class="dropdown-menu dropdown-menu-sw">
-        
+
 <a class="dropdown-item" href="/new" data-ga-click="Header, create new repository">
   New repository
 </a>
@@ -221,13 +221,13 @@
 </ul>
 
 
-    
+
   </div>
 </div>
 
-      
 
-      
+
+
 
 
     <div id="start-of-content" class="accessibility-aid"></div>
@@ -243,7 +243,7 @@
       <div class="container">
 
         <div class="clearfix">
-          
+
 
 <ul class="pagehead-actions">
 
@@ -320,7 +320,7 @@
   </li>
 
   <li>
-    
+
   <div class="js-toggler-container js-social-container starring-container ">
 
     <!-- </textarea> --><!-- '"` --><form accept-charset="UTF-8" action="/bgrins/spectrum/unstar" class="js-toggler-form starred js-unstar-button" data-form-nonce="839e9f769b28fdbc0f7cb12a3483da83dc28f21f" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="mfXnu61/7icJPgPis9uNyJWtwVZLXn0tI7VuROGoe05sWrEBFEBzok0pJWjRsPvM4jin5u12HeDAOwSGH8LmpQ==" /></div>
@@ -387,7 +387,7 @@
     <div class="container">
       <div class="repository-with-sidebar repo-container new-discussion-timeline ">
         <div class="repository-sidebar clearfix">
-          
+
 <nav class="sunken-menu repo-nav js-repo-nav js-sidenav-container-pjax js-octicon-loaders"
      role="navigation"
      data-pjax="#js-repo-pjax-container"
@@ -439,7 +439,7 @@
 </nav>
 
             <div class="only-with-full-nav">
-                
+
 <div class="js-clone-url clone-url open"
   data-protocol-type="http">
   <h3 class="text-small text-muted"><span class="text-emphasized">HTTPS</span> clone URL</h3>
@@ -452,7 +452,7 @@
   </div>
 </div>
 
-  
+
 <div class="js-clone-url clone-url "
   data-protocol-type="ssh">
   <h3 class="text-small text-muted"><span class="text-emphasized">SSH</span> clone URL</h3>
@@ -465,7 +465,7 @@
   </div>
 </div>
 
-  
+
 <div class="js-clone-url clone-url "
   data-protocol-type="subversion">
   <h3 class="text-small text-muted"><span class="text-emphasized">Subversion</span> checkout URL</h3>
@@ -499,14 +499,14 @@
         </div>
         <div id="js-repo-pjax-container" class="repository-content context-loader-container" data-pjax-container>
 
-          
+
 
 <a href="/bgrins/spectrum/blob/2191395978d3663324c15ec492a74358bfe516a6/docs/docs.js" class="hidden js-permalink-shortcut" data-hotkey="y">Permalink</a>
 
 <!-- blob contrib key: blob_contributors:v21:dfd562fc9fca5bbe6bc9bc2a698a4f86 -->
 
   <div class="file-navigation js-zeroclipboard-container">
-    
+
 <div class="select-menu js-menu-container js-select-menu left">
   <button class="btn btn-sm select-menu-button js-menu-target css-truncate" data-hotkey="w"
     title="master"
@@ -1316,7 +1316,7 @@
   </div>
 </div>
 
-  
+
 
   <div class="blob-wrapper data type-javascript">
       <table class="highlight tab-size js-file-line-container" data-tab-size="8">
@@ -1949,7 +1949,7 @@
         <td id="LC151" class="blob-code blob-code-inner js-file-line">    showAlpha<span class="pl-k">:</span> <span class="pl-c1">true</span>,</td>
       </tr>
       <tr>
-        <td id="L152" class="blob-num js-line-number" data-line-number="152"></td>
+        <td id="L152" class="blob-num js-line-number" data-line-number="152"></td>	
         <td id="LC152" class="blob-code blob-code-inner js-file-line">    showInput<span class="pl-k">:</span> <span class="pl-c1">true</span>,</td>
       </tr>
       <tr>
@@ -3307,9 +3307,9 @@
 
 
 
-    
-    
-    
+
+
+
 
     <div id="ajax-error-message" class="flash flash-error">
       <span class="octicon octicon-alert"></span>
@@ -3322,8 +3322,8 @@
 
       <script crossorigin="anonymous" integrity="sha256-CA8cFVoo9aQxXUpoYq6vt+J7ygp022966eAEjjITadE=" src="https://assets-cdn.github.com/assets/frameworks-080f1c155a28f5a4315d4a6862aeafb7e27bca0a74db6f7ae9e0048e321369d1.js"></script>
       <script async="async" crossorigin="anonymous" integrity="sha256-2T0iiCiBK1faaqu9RFTGOUBuDWlNK49lhKGQVIr99dU=" src="https://assets-cdn.github.com/assets/github-d93d228828812b57da6aabbd4454c639406e0d694d2b8f6584a190548afdf5d5.js"></script>
-      
-      
+
+
     <div class="js-stale-session-flash stale-session-flash flash flash-warn flash-banner hidden">
       <span class="octicon octicon-alert"></span>
       <span class="signed-in-tab-flash">You signed in with another tab or window. <a href="">Reload</a> to refresh your session.</span>
@@ -3331,4 +3331,3 @@
     </div>
   </body>
 </html>
-
