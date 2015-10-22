@@ -24,29 +24,46 @@
 <body>
   <div id="popup">
 
-<label>Choose a color to highlight mouse cursor on mouse move:</label>
-<input id='color' class='color' value='' />
-<label>Choose a color to highlight mouse cursor on mouse click down:</label>
-<input id='mouseDownColor' class='color' value='' />
-
+<label>Mouse Move Highlight Circle Color:</label>
+<input id='mouseMoveColor' class='color' value='' />
 <br /><br />
 <label>Mouse Move Highlight Circle Size:</label>
-<input id='circle_size' type='range' min='0' max='350' step='1' value='' />
+<input id='mouseMoveSize' type='range' min='0' max='350' step='1' value='' />
+<br /><br />
+<label>Mouse Move Highlight Border Color:</label>
+<input id='mouseMoveBorderColor' class='color' value='' />
+<br /><br />
+<label>Mouse Move Highlight Circle Border Size:</label>
+<input id='mouseMoveBorderSize' type='range' min='0' max='50' step='1' value='' />
+<br /><br /><br /><br />
+
+
+
+
+
+<label>Mouse Down Highlight Circle Color:</label>
+<input id='mouseDownColor' class='color' value='' />
 <br /><br />
 <label>Mouse Down Highlight Circle Size:</label>
 <input id='mouseDownSize' type='range' min='0' max='350' step='1' value='' />
 <br /><br />
-<label>Choose a Border Color:</label>
-<input type ='text' id='bordercolor' class='bordercolor' value='' />
+<label>Mouse Down Highlight Border Color:</label>
+<input id='mouseDownBorderColor' class='color' value='' />
 <br /><br />
+<label>Mouse Down Highlight Circle Border Size:</label>
+<input id='mouseDownBorderSize' type='range' min='0' max='50' step='1' value='' />
+<br /><br /><br /><br />
+
+
+
+
+
 
 <input type='text' name='borderColor' id='showAlphaWithInput' />
 
 
 <br /><br />
-<label>Circle Border Size:</label>
-<input id='circle_border_size' type='text' value='' />
-<br /><br />
+
 <div id="status"></div>
 <hr />
 <button id="save">Save</button>

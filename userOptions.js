@@ -1,20 +1,23 @@
 // Saves options to chrome.storage
 function save_options() {
-    var color = document.getElementById('color').value;
+    var mouseMoveColor = document.getElementById('mouseMoveColor').value;
     var mouseDownColor = document.getElementById('mouseDownColor').value;
 
+    var mouseMoveBorderColor = document.getElementById('mouseMoveBorderColor').value;
 
-    var circleSize = document.getElementById('circle_size').value;
+
+    var mouseMoveSize = document.getElementById('mouseMoveSize').value;
     var mouseDownSize = document.getElementById('mouseDownSize').value;
 
-    var circleBorderSize = document.getElementById('circle_border_size').value;
+    var mouseMoveBorderSize = document.getElementById('mouseMoveBorderSize').value;
 
     chrome.storage.sync.set({
-        favoriteColor: color,
+        mouseMoveColor: mouseMoveColor,
         mouseDownColor: mouseDownColor,
-        circleSize: circleSize,
+        mouseMoveBorderColor: mouseMoveBorderColor,
+        mouseMoveSize: mouseMoveSize,
         mouseDownSize: mouseDownSize,
-        circleBorderSize: circleBorderSize
+        mouseMoveBorderSize: mouseMoveBorderSize
     }, function() {
         // Update status to let user know options were saved.
         var status = document.getElementById('status');
@@ -30,17 +33,26 @@ function save_options() {
 function restore_options() {
     // Use default value color = 'red' and likesColor = true.
     chrome.storage.sync.get({
-        favoriteColor: 'none',
+        mouseMoveColor: 'none',
         mouseDownColor: 'none',
-        circleSize: '20',
-        mouseDownSize: '10',
-        circleBorderSize: '5'
+
+        mouseMoveBorderColor: 'none',
+
+        mouseMoveSize: '20',
+        mouseDownSize: '20',
+        mouseMoveBorderSize: '5'
     }, function(items) {
-        document.getElementById('color').value = items.favoriteColor;
+        document.getElementById('mouseMoveColor').value = items.mouseMoveColor;
         document.getElementById('mouseDownColor').value = items.mouseDownColor;
-        document.getElementById('circle_size').value = items.circleSize;
+
+        document.getElementById('mouseMoveBorderColor').value = items.mouseMoveBorderColor;
+
+
+
+
+        document.getElementById('circle_size').value = items.mouseMoveSize;
         document.getElementById('mouseDownSize').value = items.mouseDownSize;
-        document.getElementById('circle_border_size').value = items.circleBorderSize;
+        document.getElementById('mouseMoveBorderSize').value = items.mouseMoveBorderSize;
     });
 }
 document.addEventListener('DOMContentLoaded', restore_options);

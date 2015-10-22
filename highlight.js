@@ -3,12 +3,16 @@ $('body').append("<div id='ext-mouse-cursor'></div>");
 var mouseMoveHighlight = $("#ext-mouse-cursor");
 var mouseDownHighlight = $("#ext-mouse-cursor");
 
-
-var circleSize = 0;
-var mouseDownSize = 0;
-var circleBorderSize = 0;
-var favoriteColor = '000000';
+var mouseMoveColor = '000000';
 var mouseDownColor = '000000';
+
+var mouseMoveBorderColor = '000000';
+
+
+var mouseMoveSize = 0;
+var mouseDownSize = 0;
+var mouseMoveBorderSize = 0;
+
 
 
 
@@ -17,10 +21,13 @@ function mouseMove(e){
   var y = e.clientY-mouseMoveHighlight.outerHeight()/2;
 
   chrome.storage.sync.get(null, function(response) {
-    circleSize = parseInt(response.circleSize, 10);
+    mouseMoveSize = parseInt(response.mouseMoveSize, 10);
     mouseDownSize = parseInt(response.mouseDownSize, 10);
-    circleBorderSize = parseInt(response.circleBorderSize, 10);
-    favoriteColor = response.favoriteColor;
+
+    mouseMoveBorderColor = response.mouseMoveBorderColor;
+
+    mouseMoveBorderSize = parseInt(response.mouseMoveBorderSize, 10);
+    mouseMoveColor = response.mouseMoveColor;
     mouseDownColor = response.mouseDownColor;
 
 
@@ -32,10 +39,10 @@ function mouseMove(e){
          "opacity": "0.5",
          "transition": "opacity 0.2s",
          "border-radius": "50%",
-         "width": circleSize+'px',
-         "height": circleSize+'px',
+         "width": mouseMoveSize+'px',
+         "height": mouseMoveSize+'px',
          "border":"none",
-         "background-color": "#" + favoriteColor
+         "background-color": "#" + mouseMoveColor
      });
   });
 
@@ -55,8 +62,8 @@ function mouseDown(e){
 
   chrome.storage.sync.get(null, function(response) {
     mouseDownSize = parseInt(response.mouseDownSize, 10);
-    circleBorderSize = parseInt(response.circleBorderSize, 10);
-    favoriteColor = response.favoriteColor;
+    mouseMoveBorderSize = parseInt(response.mouseMoveBorderSize, 10);
+    mouseMoveColor = response.mouseMoveColor;
     mouseDownColor = response.mouseDownColor;
 
 
@@ -123,7 +130,7 @@ function mouseUp(e){
 
   mouseMoveHighlight.css({
 
-    "background-color": "#" + favoriteColor,
+    "background-color": "#" + mouseMoveColor,
     "border": circleBorderSize + 'px solid #FF00D4',
   });
 }
