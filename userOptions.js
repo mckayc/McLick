@@ -1,10 +1,15 @@
 // Saves options to chrome.storage
 function save_options() {
     var color = document.getElementById('color').value;
+    var mouseDownColor = document.getElementById('mouseDownColor').value;
+
+
     var circleSize = document.getElementById('circle_size').value;
     var circleBorderSize = document.getElementById('circle_border_size').value;
+
     chrome.storage.sync.set({
         favoriteColor: color,
+        mouseDownColor: mouseDownColor,
         circleSize: circleSize,
         circleBorderSize: circleBorderSize
     }, function() {
@@ -23,10 +28,12 @@ function restore_options() {
     // Use default value color = 'red' and likesColor = true.
     chrome.storage.sync.get({
         favoriteColor: 'none',
+        mouseDownColor: 'none',
         circleSize: '20',
         circleBorderSize: '5'
     }, function(items) {
         document.getElementById('color').value = items.favoriteColor;
+        document.getElementById('mouseDownColor').value = items.mouseDownColor;
         document.getElementById('circle_size').value = items.circleSize;
         document.getElementById('circle_border_size').value = items.circleBorderSize;
     });

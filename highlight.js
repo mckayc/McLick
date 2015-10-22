@@ -5,6 +5,7 @@ var follower = $("#ext-mouse-cursor");
 var circleSize = 0;
 var circleBorderSize = 0;
 var favoriteColor = '000000';
+var mouseDownColor = '000000';
 
 function mouseMove(e){
   var x = e.clientX-follower.outerWidth()/2;
@@ -14,6 +15,8 @@ function mouseMove(e){
     circleSize = parseInt(response.circleSize, 10);
     circleBorderSize = parseInt(response.circleBorderSize, 10);
     favoriteColor = response.favoriteColor;
+    mouseDownColor = response.mouseDownColor;
+
 
     follower.css({
          'display': 'block',
@@ -36,6 +39,8 @@ function mouseMove(e){
 		});
 }
 
+
+
 function mouseDown(e){
   var offset = follower.offset();
   offset.top = offset.top - (circleBorderSize/2);
@@ -48,6 +53,8 @@ function mouseDown(e){
     "border": circleBorderSize + 'px solid #29aae1',
   });
 }
+
+
 
 function mouseUp(e){
   var offset = follower.offset();
