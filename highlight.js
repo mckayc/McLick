@@ -1,7 +1,9 @@
 $('body').append("<div id='ext-mouse-cursor'></div>");
+$('body').append("<div id='ext-mouse-down'></div>");
+
 
 var mouseMoveHighlight = $("#ext-mouse-cursor");
-var mouseDownHighlight = $("#ext-mouse-cursor");
+var mouseDownHighlight = $("#ext-mouse-down");
 var mouseUpHighlight = $("#ext-mouse-cursor");
 
 var mouseMoveColor = '000000';
