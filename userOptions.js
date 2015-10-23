@@ -3,7 +3,7 @@ function save_options() {
     // var mouseMoveColor = document.getElementById('mouseMoveColor').value;
     var mouseMoveColor = $('#mouseMoveColor').spectrum("get").toRgbString();
     var mouseMoveSize = document.getElementById('mouseMoveSize').value;
-    var mouseMoveBorderColor = document.getElementById('mouseMoveBorderColor').value;
+    var mouseMoveBorderColor = $('#mouseMoveBorderColor').spectrum("get").toRgbString();
     var mouseMoveBorderSize = document.getElementById('mouseMoveBorderSize').value;
 
     var mouseDownColor = $('#mouseDownColor').spectrum("get").toRgbString();
@@ -42,7 +42,7 @@ function init() {
         // mouseMoveColor: 'none',
         mouseMoveColor: 'rbga(255,0,0,0)',
         mouseMoveSize: '20',
-        mouseMoveBorderColor: 'none',
+        mouseMoveBorderColor: 'rbga(255,0,0,0)',
         mouseMoveBorderSize: '5',
 
         mouseDownColor: 'rbga(255,0,0,0)',
@@ -65,6 +65,28 @@ console.log(items, items.mouseMoveColor);
           ]
       });
 
+console.log(items, items.mouseMoveBorderColor);
+      $('#mouseMoveBorderColor').spectrum({
+          color: items.mouseMoveBorderColor,
+          showAlpha: true,
+          showInput: true,
+          showPalette: true,
+          palette: [
+              ["rgba(255, 128, 0, .9)", "rgba(255, 128, 0, .5)"],
+              ["red", "green", "blue"],
+              ["hsla(25, 50, 75, .5)", "rgba(100, .5, .5, .8)"]
+          ]
+      });
+
+
+
+
+
+
+
+
+
+
 console.log(items, items.mouseDownColor);
       $('#mouseDownColor').spectrum({
           color: items.mouseDownColor,
@@ -81,7 +103,7 @@ console.log(items, items.mouseDownColor);
 
         // document.getElementById('mouseMoveColor').value = items.mouseMoveColor;
         document.getElementById('mouseMoveSize').value = items.mouseMoveSize;
-        document.getElementById('mouseMoveBorderColor').value = items.mouseMoveBorderColor;
+        // document.getElementById('mouseMoveBorderColor').value = items.mouseMoveBorderColor;
         document.getElementById('mouseMoveBorderSize').value = items.mouseMoveBorderSize;
 
         // document.getElementById('mouseDownColor').value = items.mouseDownColor;

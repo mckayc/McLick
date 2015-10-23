@@ -44,7 +44,7 @@ function mouseMove(e){
          "border-radius": "50%",
          "width": mouseMoveSize+'px',
          "height": mouseMoveSize+'px',
-         "border": mouseMoveBorderSize+"px solid #29aae1",
+         "border": mouseMoveBorderSize+"px solid "+ mouseMoveBorderColor,
          "background-color": mouseMoveColor,
      });
   });
