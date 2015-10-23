@@ -8,7 +8,7 @@ function save_options() {
 
     var mouseDownColor = $('#mouseDownColor').spectrum("get").toRgbString();
     var mouseDownSize = document.getElementById('mouseDownSize').value;
-    var mouseDownBorderColor = document.getElementById('mouseDownBorderColor').value;
+    var mouseDownBorderColor = $('#mouseDownBorderColor').spectrum("get").toRgbString();
     var mouseDownBorderSize = document.getElementById('mouseDownBorderSize').value;
 
 
@@ -47,7 +47,7 @@ function init() {
 
         mouseDownColor: 'rbga(255,0,0,0)',
         mouseDownSize: '20',
-        mouseDownBorderColor: 'none',
+        mouseDownBorderColor: 'rbga(255,0,0,0)',
         mouseDownBorderSize: '5',
 
     }, function(items) {
@@ -81,15 +81,23 @@ console.log(items, items.mouseMoveBorderColor);
 
 
 
-
-
-
-
-
-
 console.log(items, items.mouseDownColor);
       $('#mouseDownColor').spectrum({
           color: items.mouseDownColor,
+          showAlpha: true,
+          showInput: true,
+          showPalette: true,
+          palette: [
+              ["rgba(255, 128, 0, .9)", "rgba(255, 128, 0, .5)"],
+              ["red", "green", "blue"],
+              ["hsla(25, 50, 75, .5)", "rgba(100, .5, .5, .8)"]
+          ]
+      });
+
+
+console.log(items, items.mouseDownBorderColor);
+      $('#mouseDownBorderColor').spectrum({
+          color: items.mouseDownBorderColor,
           showAlpha: true,
           showInput: true,
           showPalette: true,
@@ -108,7 +116,7 @@ console.log(items, items.mouseDownColor);
 
         // document.getElementById('mouseDownColor').value = items.mouseDownColor;
         document.getElementById('mouseDownSize').value = items.mouseDownSize;
-        document.getElementById('mouseDownBorderColor').value = items.mouseDownBorderColor;
+        // document.getElementById('mouseDownBorderColor').value = items.mouseDownBorderColor;
         document.getElementById('mouseDownBorderSize').value = items.mouseDownBorderSize;
 
     });

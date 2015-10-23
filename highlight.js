@@ -82,7 +82,7 @@ function mouseDown(e){
          "border-radius": "50%",
          "width": mouseDownSize+'px',
          "height": mouseDownSize+'px',
-         "border": mouseDownBorderSize+"px solid #29aae1",
+         "border": mouseDownBorderSize+"px solid "+ mouseDownBorderColor,
          "background-color": mouseDownColor,
      });
   });
