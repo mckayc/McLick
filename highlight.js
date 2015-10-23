@@ -21,9 +21,9 @@ function mouseMove(e){
   var y = e.clientY-mouseMoveHighlight.outerHeight()/2;
 
   chrome.storage.sync.get(null, function(response) {
-    // mouseMoveColor = response.mouseMoveColor;
+
     console.log(response);
-    mouseMoveColor = response.mouseRgba;
+    mouseMoveColor = response.mouseMoveColor;
     mouseMoveSize = parseInt(response.mouseMoveSize, 10);
     mouseMoveBorderColor = response.mouseMoveBorderColor;
     mouseMoveBorderSize = parseInt(response.mouseMoveBorderSize, 10);
@@ -40,12 +40,12 @@ function mouseMove(e){
          "pointer-events": 'none',
          "position": "fixed",
         //  "opacity": mouseMoveAlpha,
-         "transition": "opacity 0.2s",
+        //  "transition": "opacity 0.2s",
          "border-radius": "50%",
          "width": mouseMoveSize+'px',
          "height": mouseMoveSize+'px',
          "border":"none",
-         "background-color": mouseMoveColor
+         "background-color": mouseMoveColor,
      });
   });
 
@@ -77,13 +77,13 @@ function mouseDown(e){
          'z-index': '99999999',
          "pointer-events": 'none',
          "position": "fixed",
-         "opacity": "0.5",
-         "transition": "opacity 0.2s",
+        //  "opacity": "0.5",
+        //  "transition": "opacity 0.2s",
          "border-radius": "50%",
          "width": mouseDownSize+'px',
          "height": mouseDownSize+'px',
          "border":"none",
-         "background-color": "#" + mouseDownColor
+         "background-color": mouseDownColor,
      });
   });
 
