@@ -29,6 +29,7 @@ The name **McLick** stands for "Mouse Click." The random capitalization comes fr
 **Version 0.5** - First release.
 * Do thorough testing and bug fixes. Make sure basic functions work as intended in most circumstances.
 * Package extension and put it on the Chrome app store.
+* Add example gif in this README.md
 
 **Version 0.6** - Extended features.
 * Start implementing some of Dallin's code such as right click, left click, middle click and double click.
