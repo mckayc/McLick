@@ -11,6 +11,11 @@ function save_options() {
     var mouseDownBorderColor = $('#mouseDownBorderColor').spectrum("get").toRgbString();
     var mouseDownBorderSize = document.getElementById('mouseDownBorderSize').value;
 
+    var mouseUpColor = $('#mouseUpColor').spectrum("get").toRgbString();
+    var mouseUpSize = document.getElementById('mouseUpSize').value;
+    var mouseUpBorderColor = $('#mouseUpBorderColor').spectrum("get").toRgbString();
+    var mouseUpBorderSize = document.getElementById('mouseUpBorderSize').value;
+
 
     chrome.storage.sync.set({
         mouseMoveColor: mouseMoveColor,
@@ -22,6 +27,11 @@ function save_options() {
         mouseDownSize: mouseDownSize,
         mouseDownBorderColor: mouseDownBorderColor,
         mouseDownBorderSize: mouseDownBorderSize,
+
+        mouseUpColor: mouseUpColor,
+        mouseUpSize: mouseUpSize,
+        mouseUpBorderColor: mouseUpBorderColor,
+        mouseUpBorderSize: mouseUpBorderSize,
 
     }, function() {
         // Update status to let user know options were saved.
@@ -49,6 +59,11 @@ function init() {
         mouseDownSize: '20',
         mouseDownBorderColor: 'rbga(255,0,0,0)',
         mouseDownBorderSize: '5',
+
+        mouseUpColor: 'rbga(255,0,0,0)',
+        mouseUpSize: '20',
+        mouseUpBorderColor: 'rbga(255,0,0,0)',
+        mouseUpBorderSize: '5',
 
     }, function(items) {
 
@@ -108,6 +123,33 @@ console.log(items, items.mouseDownBorderColor);
           ]
       });
 
+console.log(items, items.mouseUpColor);
+      $('#mouseUpColor').spectrum({
+          color: items.mouseUpColor,
+          showAlpha: true,
+          showInput: true,
+          showPalette: true,
+          palette: [
+              ["rgba(255, 128, 0, .9)", "rgba(255, 128, 0, .5)"],
+              ["red", "green", "blue"],
+              ["hsla(25, 50, 75, .5)", "rgba(100, .5, .5, .8)"]
+          ]
+      });
+
+
+console.log(items, items.mouseUpBorderColor);
+      $('#mouseUpBorderColor').spectrum({
+          color: items.mouseUpBorderColor,
+          showAlpha: true,
+          showInput: true,
+          showPalette: true,
+          palette: [
+              ["rgba(255, 128, 0, .9)", "rgba(255, 128, 0, .5)"],
+              ["red", "green", "blue"],
+              ["hsla(25, 50, 75, .5)", "rgba(100, .5, .5, .8)"]
+          ]
+      });
+
 
         // document.getElementById('mouseMoveColor').value = items.mouseMoveColor;
         document.getElementById('mouseMoveSize').value = items.mouseMoveSize;
@@ -118,6 +160,11 @@ console.log(items, items.mouseDownBorderColor);
         document.getElementById('mouseDownSize').value = items.mouseDownSize;
         // document.getElementById('mouseDownBorderColor').value = items.mouseDownBorderColor;
         document.getElementById('mouseDownBorderSize').value = items.mouseDownBorderSize;
+
+        // document.getElementById('mouseUpColor').value = items.mouseUpColor;
+        document.getElementById('mouseUpSize').value = items.mouseUpSize;
+        // document.getElementById('mouseUpBorderColor').value = items.mouseUpBorderColor;
+        document.getElementById('mouseUpBorderSize').value = items.mouseUpBorderSize;
 
     });
 }

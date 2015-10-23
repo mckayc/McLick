@@ -2,7 +2,7 @@ $('body').append("<div id='ext-mouse-cursor'></div>");
 
 var mouseMoveHighlight = $("#ext-mouse-cursor");
 var mouseDownHighlight = $("#ext-mouse-cursor");
-
+var mouseUpHighlight = $("#ext-mouse-cursor");
 
 var mouseMoveColor = '000000';
 var mouseMoveSize = 0;
@@ -13,6 +13,11 @@ var mouseDownColor = '000000';
 var mouseDownSize = 0;
 var mouseDownBorderColor = '000000';
 var mouseDownBorderSize = 0;
+
+var mouseUpColor = '000000';
+var mouseUpSize = 0;
+var mouseUpBorderColor = '000000';
+var mouseUpBorderSize = 0;
 
 
 
@@ -32,6 +37,11 @@ function mouseMove(e){
     mouseDownSize = parseInt(response.mouseDownSize, 10);
     mouseDownBorderColor = response.mouseDownBorderColor;
     mouseDownBorderSize = parseInt(response.mouseDownBorderSize, 10);
+
+    mouseUpColor = response.mouseUpColor;
+    mouseUpSize = parseInt(response.mouseUpSize, 10);
+    mouseUpBorderColor = response.mouseUpBorderColor;
+    mouseUpBorderSize = parseInt(response.mouseUpBorderSize, 10);
 
 
     mouseMoveHighlight.css({
@@ -71,6 +81,11 @@ function mouseDown(e){
     mouseDownBorderColor = response.mouseDownBorderColor;
     mouseDownBorderSize = parseInt(response.mouseDownBorderSize, 10);
 
+    mouseUpColor = response.mouseUpColor;
+    mouseUpSize = parseInt(response.mouseUpSize, 10);
+    mouseUpBorderColor = response.mouseUpBorderColor;
+    mouseUpBorderSize = parseInt(response.mouseUpBorderSize, 10);
+
 
     mouseDownHighlight.css({
          'position': 'fixed',
@@ -92,6 +107,54 @@ function mouseDown(e){
 			'left':x,
 		});
 }
+
+
+
+
+
+
+function mouseUp(e){
+  var x = e.clientX-mouseUpHighlight.outerWidth()/2;
+  var y = e.clientY-mouseUpHighlight.outerHeight()/2;
+
+  chrome.storage.sync.get(null, function(response) {
+    mouseMoveColor = response.mouseMoveColor;
+    mouseMoveSize = parseInt(response.mouseMoveSize, 10);
+    mouseMoveBorderColor = response.mouseMoveBorderColor;
+    mouseMoveBorderSize = parseInt(response.mouseMoveBorderSize, 10);
+
+    mouseDownColor = response.mouseDownColor;
+    mouseDownSize = parseInt(response.mouseDownSize, 10);
+    mouseDownBorderColor = response.mouseDownBorderColor;
+    mouseDownBorderSize = parseInt(response.mouseDownBorderSize, 10);
+
+    mouseUpColor = response.mouseUpColor;
+    mouseUpSize = parseInt(response.mouseUpSize, 10);
+    mouseUpBorderColor = response.mouseUpBorderColor;
+    mouseUpBorderSize = parseInt(response.mouseUpBorderSize, 10);
+
+
+    mouseUpHighlight.css({
+         'position': 'fixed',
+         'z-index': '99999999',
+         "pointer-events": 'none',
+         "position": "fixed",
+        //  "opacity": "0.5",
+        //  "transition": "opacity 0.2s",
+         "border-radius": "50%",
+         "width": mouseUpSize+'px',
+         "height": mouseUpSize+'px',
+         "border": mouseUpBorderSize+"px solid "+ mouseUpBorderColor,
+         "background-color": mouseUpColor,
+     });
+  });
+
+	mouseUpHighlight.css({
+			'top':y,
+			'left':x,
+		});
+}
+
 
 
 
@@ -143,7 +206,7 @@ function mouseDown(e){
 function ext_on() {
   console.log("On");
   $(window).mousedown(mouseDown);
-//  $(window).mouseup(mouseUp);
+  $(window).mouseup(mouseUp);
   $(window).mousemove(mouseMove);
 }
 
