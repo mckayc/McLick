@@ -35,7 +35,7 @@ function mouseMove(e){
 
 
     mouseMoveHighlight.css({
-         'display': 'block',
+         'position': 'fixed',
          'z-index': '99999999',
          "pointer-events": 'none',
          "position": "fixed",
@@ -44,7 +44,7 @@ function mouseMove(e){
          "border-radius": "50%",
          "width": mouseMoveSize+'px',
          "height": mouseMoveSize+'px',
-         "border":"none",
+         "border": mouseMoveBorderSize+"px solid #29aae1",
          "background-color": mouseMoveColor,
      });
   });
@@ -73,7 +73,7 @@ function mouseDown(e){
 
 
     mouseDownHighlight.css({
-         'display': 'block',
+         'position': 'fixed',
          'z-index': '99999999',
          "pointer-events": 'none',
          "position": "fixed",
@@ -82,7 +82,7 @@ function mouseDown(e){
          "border-radius": "50%",
          "width": mouseDownSize+'px',
          "height": mouseDownSize+'px',
-         "border":"none",
+         "border": mouseDownBorderSize+"px solid #29aae1",
          "background-color": mouseDownColor,
      });
   });
