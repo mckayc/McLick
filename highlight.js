@@ -1,10 +1,11 @@
-$('body').append("<div id='ext-mouse-cursor'></div>");
+$('body').append("<div id='ext-mouse-move'></div>");
 $('body').append("<div id='ext-mouse-down'></div>");
+$('body').append("<div id='ext-mouse-up'></div>");
 
 
-var mouseMoveHighlight = $("#ext-mouse-cursor");
+var mouseMoveHighlight = $("#ext-mouse-move");
 var mouseDownHighlight = $("#ext-mouse-down");
-var mouseUpHighlight = $("#ext-mouse-cursor");
+var mouseUpHighlight = $("#ext-mouse-up");
 
 var mouseMoveColor = '000000';
 var mouseMoveSize = 0;
@@ -50,7 +51,7 @@ function mouseMove(e){
          'position': 'fixed',
          'z-index': '99999999',
          "pointer-events": 'none',
-         "position": "fixed",
+
         //  "opacity": mouseMoveAlpha,
         //  "transition": "opacity 0.2s",
          "border-radius": "50%",
@@ -93,9 +94,19 @@ function mouseDown(e){
          'position': 'fixed',
          'z-index': '99999999',
          "pointer-events": 'none',
-         "position": "fixed",
+
         //  "opacity": "0.5",
-        //  "transition": "opacity 0.2s",
+        //  "transition": "opacity 0.3s",
+
+
+
+        //  "visibility": "hidden",
+        //  "opacity": "0",
+        //  "transition": "visibility 0s 2s, opacity 2s linear",
+
+
+
+
          "border-radius": "50%",
          "width": mouseDownSize+'px',
          "height": mouseDownSize+'px',
@@ -140,9 +151,18 @@ function mouseUp(e){
          'position': 'fixed',
          'z-index': '99999999',
          "pointer-events": 'none',
-         "position": "fixed",
+
         //  "opacity": "0.5",
-        //  "transition": "opacity 0.2s",
+        //  "transition": "opacity 0.3s",
+
+
+
+        // "visibility": "hidden",
+        // "opacity": "0",
+        // "transition": "visibility 0s 2s, opacity 2s linear",
+
+
+
          "border-radius": "50%",
          "width": mouseUpSize+'px',
          "height": mouseUpSize+'px',
@@ -159,67 +179,26 @@ function mouseUp(e){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function mouseDown(e){
-//   var offset = mouseMoveHighlight.offset();mouseMoveHighlight
-//   offset.top = offset.top - (circleBorderSize/2);
-//   offset.left = offset.left - (circleBorderSize/2);
-//   mouseMoveHighlight.offset(offset);
-//
-//   mouseMoveHighlight.css({
-//     'opacity':'1',
-//     "background-color": "transparent",
-//     "border": circleBorderSize + 'px solid #29aae1',
-//   });
-// }
-
-
-
-// function mouseUp(e){
-//   var offset = mouseMoveHighlight.offset();
-//   offset.top = offset.top + (circleBorderSize/2);
-//   offset.left = offset.left + (circleBorderSize/2);
-//   mouseMoveHighlight.offset(offset);
-//
-//   mouseMoveHighlight.css({
-//
-//     "background-color": "#" + mouseMoveColor,
-//     "border": circleBorderSize + 'px solid #FF00D4',
-//   });
-// }
-
 function ext_on() {
   console.log("On");
+  $(window).mousemove(mouseMove);
   $(window).mousedown(mouseDown);
   $(window).mouseup(mouseUp);
-  $(window).mousemove(mouseMove);
 }
 
 function ext_off() {
   console.log("Off");
+  $(window).unbind('mousemove',mouseMove);
   $(window).unbind('mousedown',mouseDown);
-//  $(window).unbind('mousemove',mouseMove);
+  $(window).unbind('mouseup',mouseUp);
+
   mouseMoveHighlight.css({
     'display': 'none'
   });
   mouseDownHighlight.css({
+    'display': 'none'
+  });
+  mouseUpHighlight.css({
     'display': 'none'
   });
 
