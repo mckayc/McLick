@@ -23,7 +23,6 @@ var mouseUpBorderColor = '000000';
 var mouseUpBorderSize = 0;
 
 
-
 function mouseMove(e){
   var x = e.clientX-mouseMoveHighlight.outerWidth()/2;
   var y = e.clientY-mouseMoveHighlight.outerHeight()/2;
@@ -46,14 +45,16 @@ function mouseMove(e){
     mouseUpBorderColor = response.mouseUpBorderColor;
     mouseUpBorderSize = parseInt(response.mouseUpBorderSize, 10);
 
-
     mouseMoveHighlight.css({
          'position': 'fixed',
          'z-index': '99999999',
          "pointer-events": 'none',
+         'top':y,
+   			 'left':x,
 
         //  "opacity": mouseMoveAlpha,
         //  "transition": "opacity 0.2s",
+
          "border-radius": "50%",
          "width": mouseMoveSize+'px',
          "height": mouseMoveSize+'px',
@@ -61,13 +62,7 @@ function mouseMove(e){
          "background-color": mouseMoveColor,
      });
   });
-
-	mouseMoveHighlight.css({
-			'top':y,
-			'left':x,
-		});
 }
-
 
 function mouseDown(e){
   var x = e.clientX-mouseDownHighlight.outerWidth()/2;
@@ -89,42 +84,29 @@ function mouseDown(e){
     mouseUpBorderColor = response.mouseUpBorderColor;
     mouseUpBorderSize = parseInt(response.mouseUpBorderSize, 10);
 
-
     mouseDownHighlight.css({
          'position': 'fixed',
          'z-index': '99999999',
          "pointer-events": 'none',
+         'top':y,
+   			 'left':x,
+         "border-radius": "50%",
+         "width": mouseDownSize+'px',
+         "height": mouseDownSize+'px',
+         "border": mouseDownBorderSize+"px solid "+ mouseDownBorderColor,
+         "background-color": mouseDownColor,
 
         //  "opacity": "0.5",
-        //  "transition": "opacity 0.3s",
-
-
+         "transition": "opacity .25s",
 
         //  "visibility": "hidden",
         //  "opacity": "0",
         //  "transition": "visibility 0s 2s, opacity 2s linear",
 
 
-
-
-         "border-radius": "50%",
-         "width": mouseDownSize+'px',
-         "height": mouseDownSize+'px',
-         "border": mouseDownBorderSize+"px solid "+ mouseDownBorderColor,
-         "background-color": mouseDownColor,
      });
   });
-
-	mouseDownHighlight.css({
-			'top':y,
-			'left':x,
-		});
 }
-
-
-
-
-
 
 function mouseUp(e){
   var x = e.clientX-mouseUpHighlight.outerWidth()/2;
@@ -146,22 +128,19 @@ function mouseUp(e){
     mouseUpBorderColor = response.mouseUpBorderColor;
     mouseUpBorderSize = parseInt(response.mouseUpBorderSize, 10);
 
-
     mouseUpHighlight.css({
          'position': 'fixed',
          'z-index': '99999999',
          "pointer-events": 'none',
+         'top':y,
+         'left':x,
 
         //  "opacity": "0.5",
         //  "transition": "opacity 0.3s",
 
-
-
         // "visibility": "hidden",
         // "opacity": "0",
         // "transition": "visibility 0s 2s, opacity 2s linear",
-
-
 
          "border-radius": "50%",
          "width": mouseUpSize+'px',
@@ -170,13 +149,7 @@ function mouseUp(e){
          "background-color": mouseUpColor,
      });
   });
-
-	mouseUpHighlight.css({
-			'top':y,
-			'left':x,
-		});
 }
-
 
 
 function ext_on() {
