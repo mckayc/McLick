@@ -95,6 +95,7 @@ function mouseDown(e){
       y = e.clientY-mouseDownHighlight.outerHeight()/2;
     }
 
+
     mouseDownHighlight.css({
          'position': 'fixed',
          'z-index': '99999999',
@@ -106,18 +107,20 @@ function mouseDown(e){
          "height": mouseDownSize+'px',
          "border": mouseDownBorderSize+"px solid "+ mouseDownBorderColor,
          "background-color": mouseDownColor,
-
-        //  "opacity": "0.5",
-         "transition": "opacity .25s",
-
-        //  "visibility": "hidden",
-        //  "opacity": "0",
-        //  "transition": "visibility 0s 2s, opacity 2s linear",
-
-
+         "display": "inline", // Needed to show after Jquery's fadeOut.
      });
+    // Figure out how to do something with the Jquery animate.
+    //  mouseDownHighlight.animate({
+    //       width: "50px",
+    //       height: "50px",
+    //    }, 300, function() {
+    //      // Animation complete.
+    //    });
+     mouseDownHighlight.fadeOut(300); //Jquery function to fade.
+
   });
 }
+
 
 function mouseUp(e){
   var x = e.clientX-mouseUpHighlight.outerWidth()/2;
@@ -156,20 +159,14 @@ function mouseUp(e){
          "pointer-events": 'none',
          'top':y,
          'left':x,
-
-        //  "opacity": "0.5",
-        //  "transition": "opacity 0.3s",
-
-        // "visibility": "hidden",
-        // "opacity": "0",
-        // "transition": "visibility 0s 2s, opacity 2s linear",
-
          "border-radius": "50%",
          "width": mouseUpSize+'px',
          "height": mouseUpSize+'px',
          "border": mouseUpBorderSize+"px solid "+ mouseUpBorderColor,
          "background-color": mouseUpColor,
+         "display": "inline", // Needed to show after Jquery's fadeOut.
      });
+     mouseUpHighlight.fadeOut(300); //Jquery function to fade.
   });
 }
 
