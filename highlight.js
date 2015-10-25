@@ -29,7 +29,6 @@ function mouseMove(e){
 
   chrome.storage.sync.get(null, function(response) {
 
-    console.log(response);
     mouseMoveColor = response.mouseMoveColor;
     mouseMoveSize = parseInt(response.mouseMoveSize, 10);
     mouseMoveBorderColor = response.mouseMoveBorderColor;
@@ -65,6 +64,7 @@ function mouseMove(e){
 }
 
 function mouseDown(e){
+  console.log("Mouse Down.")
   var x = e.clientX-mouseDownHighlight.outerWidth()/2;
   var y = e.clientY-mouseDownHighlight.outerHeight()/2;
 
@@ -83,6 +83,17 @@ function mouseDown(e){
     mouseUpSize = parseInt(response.mouseUpSize, 10);
     mouseUpBorderColor = response.mouseUpBorderColor;
     mouseUpBorderSize = parseInt(response.mouseUpBorderSize, 10);
+
+    if (mouseDownHighlight.outerHeight() === 0) {
+      mouseDownHighlight.css({
+        "border-radius": "50%",
+        "width": mouseDownSize+'px',
+        "height": mouseDownSize+'px',
+        "border": mouseDownBorderSize+"px solid "+ mouseDownBorderColor
+      });
+      x = e.clientX-mouseDownHighlight.outerWidth()/2;
+      y = e.clientY-mouseDownHighlight.outerHeight()/2;
+    }
 
     mouseDownHighlight.css({
          'position': 'fixed',
@@ -128,6 +139,17 @@ function mouseUp(e){
     mouseUpBorderColor = response.mouseUpBorderColor;
     mouseUpBorderSize = parseInt(response.mouseUpBorderSize, 10);
 
+    if (mouseUpHighlight.outerHeight() === 0) {
+      mouseUpHighlight.css({
+        "border-radius": "50%",
+        "width": mouseUpSize+'px',
+        "height": mouseUpSize+'px',
+        "border": mouseUpBorderSize+"px solid "+ mouseUpBorderColor
+      });
+      x = e.clientX-mouseUpHighlight.outerWidth()/2;
+      y = e.clientY-mouseUpHighlight.outerHeight()/2;
+    }
+
     mouseUpHighlight.css({
          'position': 'fixed',
          'z-index': '99999999',
@@ -157,6 +179,19 @@ function ext_on() {
   $(window).mousemove(mouseMove);
   $(window).mousedown(mouseDown);
   $(window).mouseup(mouseUp);
+
+  mouseMoveHighlight.css({
+    'display': 'inline'
+  });
+  mouseDownHighlight.css({
+    'display': 'inline'
+  });
+  mouseUpHighlight.css({
+    'display': 'inline'
+  });
+
+
+
 }
 
 function ext_off() {
