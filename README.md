@@ -1,13 +1,13 @@
-# McLick - Mouse Cursor and Click Highlighter for screencast recordings.
+# mClick - Mouse Cursor and Click Highlighter for screencast recordings.
 
 This is an offline Google Chrome extention. Use this extension for the following:
 * While doing a screencast recording, this will clearly show where your mouse cursor is and where you click on the page.
 * While doing a presentation, this can help so that your audience can clearly see where your mouse cursor is.
 * If you use a Chromecast, this can highlight your mouse cursor to make it easier to spot.
 
-**Note:** This exension is a collaboration of code from the existing Chrome extension "mouse_thing" (https://github.com/jared-schmidt/mouse_thing), my friend Ryan's code, and my brother Dallins code. I am not a programmer and have no idea what I am doing. You should lower your expectations before using this extension.
+**Note:** For the basic framework of this extension, I looked at the Chrome extension "mouse_thing" (https://github.com/jared-schmidt/mouse_thing). For additional code, I enlisted the help of my friends Matt and Ryan as well as my brother Dallin. I am not a programmer and have no idea what I am doing. You should lower your expectations before using this extension.
 
-The name **McLick** stands for "Mouse Click." The random capitalization comes from my name "McKay." You can pronouce the extension however you wish but in my head I pronounce it as "Muh Click," not "Mick Lick" (that would just be weird).
+For the color picker, I used Spectrum (https://bgrins.github.io/spectrum)
 
 # Road map:
 
@@ -23,7 +23,7 @@ The name **McLick** stands for "Mouse Click." The random capitalization comes fr
 
 **Version 0.4** - Polished extension.
 * Icons will be improved and looked better.
-* Options window will actually look nice and only be as big as needed. Popup window instead of full window.
+* Options window will actually look nice and only be as big as needed. ~~Popup window instead of full window. (I don't think this is actually possible.)~~
 * Default settings for extension will make it look nice and negate any need for most people to ever use options.
 
 **Version 0.5** - First release.
@@ -32,17 +32,18 @@ The name **McLick** stands for "Mouse Click." The random capitalization comes fr
 * Add example gif in this README.md
 
 **Version 0.6** - Extended features.
-* Start implementing some of Dallin's code such as right click, left click, middle click and double click.
+* Improve transitions and animations (give user options for these?).
 * Come up with something nifty for click and drag. Perhaps a new div shape?
 * In options, have live preview for shapes.
 
-**Version 0.7** - Improve options. No need for manual input.
-* User has the option to use color picker for colors.
-* User has the option to use a slider for object size.
-* User has the option to use a slider for opacity.
+**Version 0.7** - Improve options. ~~No need for manual input.~~
+* Start implementing some of Dallin's code such as right click, left click, middle click and double click.
+* ~~User has the option to use color picker for colors.~~
+* ~~User has the option to use a slider for object size.~~
+* ~~User has the option to use a slider for opacity.~~
 
 **Version 0.8** - Explore more features. Test features to see if they are useful or not.
-* Have an indicator for scroll up and scroll down.
+* Have an indicator for scroll up and scroll down. (?)
 * Improve animations.
 * Have user options to toggle every feature.
 
@@ -63,3 +64,4 @@ The name **McLick** stands for "Mouse Click." The random capitalization comes fr
 * Come up with a slick way to show keyboard keypresses.
 * Find out how to display keypress combinations.
 * Allow user options to toggle this feature.
+* Be able to use on more than just the active page.
