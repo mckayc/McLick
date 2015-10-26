@@ -50,15 +50,13 @@ function mouseMove(e){
          "pointer-events": 'none',
          'top':y,
    			 'left':x,
-
-        //  "opacity": mouseMoveAlpha,
-        //  "transition": "opacity 0.2s",
-
          "border-radius": "50%",
          "width": mouseMoveSize+'px',
          "height": mouseMoveSize+'px',
          "border": mouseMoveBorderSize+"px solid "+ mouseMoveBorderColor,
          "background-color": mouseMoveColor,
+         "display": "inline", // Needed to show after app has been turned off then back on again.
+
      });
   });
 }
@@ -176,18 +174,6 @@ function ext_on() {
   $(window).mousemove(mouseMove);
   $(window).mousedown(mouseDown);
   $(window).mouseup(mouseUp);
-
-  mouseMoveHighlight.css({
-    'display': 'inline'
-  });
-  mouseDownHighlight.css({
-    'display': 'inline'
-  });
-  mouseUpHighlight.css({
-    'display': 'inline'
-  });
-
-
 
 }
 

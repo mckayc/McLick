@@ -1,3 +1,4 @@
+
 // Saves options to chrome.storage
 function save_options() {
     // var mouseMoveColor = document.getElementById('mouseMoveColor').value;
@@ -47,9 +48,8 @@ function save_options() {
 // stored in chrome.storage.
 function init() {
 
-    // Use default value color = 'red' and likesColor = true.
     chrome.storage.sync.get({
-        // mouseMoveColor: 'none',
+
         mouseMoveColor: 'rbga(255,0,0,0)',
         mouseMoveSize: '20',
         mouseMoveBorderColor: 'rbga(255,0,0,0)',

@@ -11,12 +11,12 @@ For the color picker, I used Spectrum (https://bgrins.github.io/spectrum)
 
 # Road map:
 
-**Version 0.2** - Have a basic functional extension.
+**✓ Version 0.2** - Have a basic functional extension.
 * Mouse cursor is highlighted when moving on the screen.
 * There are mouse click indications for mouse down and mouse up.
 * You can turn the extension on and off.
 
-**Version 0.3** - Have user input for most basic functions.
+**✓ Version 0.3** - Have user input for most basic functions.
 * User can input custom values for highlight size for all functions (move, click, mouseup, etc).
 * User can input custom values for colors.
 * User can input custom values for opacities.
