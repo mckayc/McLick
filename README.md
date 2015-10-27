@@ -1,13 +1,13 @@
 # mClick - Mouse Click and Cursor Highlighter for screen recordings.
 
 Use this Chrome extension for the following:
-* While doing a screencast recording, this will clearly show where your mouse cursor is and where you click on the page.
-* While doing a presentation, this can help so that your audience can clearly see where your mouse cursor is.
-* If you use a Chromecast, this can highlight your mouse cursor to make it easier to spot.
+* While doing a screencast recording, this will clearly show where your mouse cursor is and where you click on the page. This can be useful for doing webapp tutorials.
+* While doing an online presentation, this can help so that your audience can clearly see where your mouse cursor is.
+* If you use Chromecast, this can highlight your mouse cursor to make it easier to spot.
 
-**Note:** For the basic framework of this extension, I looked at the Chrome extension "mouse_thing" (https://github.com/jared-schmidt/mouse_thing). For additional code, I enlisted the help of my friends Matt and Ryan as well as my brother Dallin. I am not a programmer and have no idea what I am doing. You should lower your expectations before using this extension.
+![Alt text](/example01.gif?raw=true "Tutorial.")
 
-For the color picker, I used Spectrum (https://bgrins.github.io/spectrum)
+
 
 # Road map:
 
@@ -60,8 +60,13 @@ For the color picker, I used Spectrum (https://bgrins.github.io/spectrum)
 * Buy myself ice cream and/or pizza and celebrate.
 
 ---
-**Version 2.0** - Start integrating keyboard indicators.
+**Version 2.0+** - Start integrating keyboard indicators.
 * Come up with a slick way to show keyboard keypresses.
 * Find out how to display keypress combinations.
 * Allow user options to toggle this feature.
 * Be able to use on more than just the active page.
+---
+
+**Note:** For the basic framework of this extension, I looked at the Chrome extension "mouse_thing" (https://github.com/jared-schmidt/mouse_thing). For additional code, I enlisted the help of my friends Matt and Ryan as well as my brother Dallin. I am not a programmer and have no idea what I am doing. You should lower your expectations before using this extension.
+
+For the color picker, I used Spectrum (https://bgrins.github.io/spectrum)
