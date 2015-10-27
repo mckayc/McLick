@@ -7,6 +7,7 @@ function save_options() {
     var mouseMoveBorderColor = $('#mouseMoveBorderColor').spectrum("get").toRgbString();
     var mouseMoveBorderSize = document.getElementById('mouseMoveBorderSize').value;
 
+
     var mouseDownColor = $('#mouseDownColor').spectrum("get").toRgbString();
     var mouseDownSize = document.getElementById('mouseDownSize').value;
     var mouseDownBorderColor = $('#mouseDownBorderColor').spectrum("get").toRgbString();
@@ -44,26 +45,69 @@ function save_options() {
     });
 }
 
+// Resets default settings to chrome.storage
+function reset_options() {
+    var resetMouseMoveColor = 'rgba(255,255,10,0.5)';
+    var resetMouseMoveSize = '50';
+    var resetMouseMoveBorderColor = 'rgba(255,255,255,0)';
+    var resetMouseMoveBorderSize = '0';
+
+    var resetMouseDownColor = 'rgba(255,255,255,0)';
+    var resetMouseDownSize = '25';
+    var resetMouseDownBorderColor = 'rgba(65,65,190,0.7)';
+    var resetMouseDownBorderSize = '5';
+
+    var resetMouseUpColor = 'rgba(255,255,255,0)';
+    var resetMouseUpSize = '20';
+    var resetMouseUpBorderColor = 'rgba(65,65,190,0.6)';
+    var resetMouseUpBorderSize = '4';
+
+    chrome.storage.sync.set({
+        mouseMoveColor: resetMouseMoveColor,
+        mouseMoveSize: resetMouseMoveSize,
+        mouseMoveBorderColor: resetMouseMoveBorderColor,
+        mouseMoveBorderSize: resetMouseMoveBorderSize,
+
+        mouseDownColor: resetMouseDownColor,
+        mouseDownSize: resetMouseDownSize,
+        mouseDownBorderColor: resetMouseDownBorderColor,
+        mouseDownBorderSize: resetMouseDownBorderSize,
+
+        mouseUpColor: resetMouseUpColor,
+        mouseUpSize: resetMouseUpSize,
+        mouseUpBorderColor: resetMouseUpBorderColor,
+        mouseUpBorderSize: resetMouseUpBorderSize,
+
+    }, function() {
+        // Update status to let user know options were saved to default.
+        var status = document.getElementById('status');
+        status.textContent = 'Options reset.';
+        setTimeout(function() {
+            status.textContent = '';
+        }, 750); window.close("userOptions.html");
+    });
+}
+
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
 function init() {
 
     chrome.storage.sync.get({
 
-        mouseMoveColor: 'rbga(255,0,0,0)',
-        mouseMoveSize: '20',
-        mouseMoveBorderColor: 'rbga(255,0,0,0)',
-        mouseMoveBorderSize: '5',
+        mouseMoveColor: 'rgba(255,230,0,0.5)',
+        mouseMoveSize: '45',
+        mouseMoveBorderColor: 'rgba(255,255,255,0)',
+        mouseMoveBorderSize: '0',
 
-        mouseDownColor: 'rbga(255,0,0,0)',
-        mouseDownSize: '20',
-        mouseDownBorderColor: 'rbga(255,0,0,0)',
-        mouseDownBorderSize: '5',
+        mouseDownColor: 'rgba(255,255,255,0)',
+        mouseDownSize: '15',
+        mouseDownBorderColor: 'rgba(64,64,191,0.5)',
+        mouseDownBorderSize: '4',
 
-        mouseUpColor: 'rbga(255,0,0,0)',
-        mouseUpSize: '20',
-        mouseUpBorderColor: 'rbga(255,0,0,0)',
-        mouseUpBorderSize: '5',
+        mouseUpColor: 'rgba(255,255,255,0)',
+        mouseUpSize: '10',
+        mouseUpBorderColor: 'rgba(64,64,191,0.5)',
+        mouseUpBorderSize: '3',
 
     }, function(items) {
 
@@ -93,9 +137,6 @@ console.log(items, items.mouseMoveBorderColor);
           ]
       });
 
-
-
-
 console.log(items, items.mouseDownColor);
       $('#mouseDownColor').spectrum({
           color: items.mouseDownColor,
@@ -108,7 +149,6 @@ console.log(items, items.mouseDownColor);
               ["hsla(25, 50, 75, .5)", "rgba(100, .5, .5, .8)"]
           ]
       });
-
 
 console.log(items, items.mouseDownBorderColor);
       $('#mouseDownBorderColor').spectrum({
@@ -136,7 +176,6 @@ console.log(items, items.mouseUpColor);
           ]
       });
 
-
 console.log(items, items.mouseUpBorderColor);
       $('#mouseUpBorderColor').spectrum({
           color: items.mouseUpBorderColor,
@@ -149,7 +188,6 @@ console.log(items, items.mouseUpBorderColor);
               ["hsla(25, 50, 75, .5)", "rgba(100, .5, .5, .8)"]
           ]
       });
-
 
         // document.getElementById('mouseMoveColor').value = items.mouseMoveColor;
         document.getElementById('mouseMoveSize').value = items.mouseMoveSize;
@@ -170,3 +208,4 @@ console.log(items, items.mouseUpBorderColor);
 }
 document.addEventListener('DOMContentLoaded', init);
 document.getElementById('save').addEventListener('click', save_options);
+document.getElementById('reset').addEventListener('click', reset_options);
