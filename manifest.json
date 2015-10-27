@@ -21,7 +21,7 @@
     "manifest_version": 2,
     "content_scripts": [{
         "matches": ["http://*/*", "https://*/*"],
-        "js": ["jquery-1.11.3.min.js", "highlight.js"],
+        "js": ["jquery-2.1.4.min.js", "highlight.js"],
         "all_frames": true
     }],
     "options_page": "userOptions.html"
