@@ -6,6 +6,11 @@ Use this Chrome extension for the following:
 * If you use Chromecast, this can highlight your mouse cursor to make it easier to spot.
 
 ![Alt text](/example01.gif?raw=true "Tutorial.")
+![Alt text](/example02.gif?raw=true "Tutorial.")
+![Alt text](/example03.gif?raw=true "Tutorial.")
+![Alt text](/example04.gif?raw=true "Tutorial.")
+![Alt text](/example05.gif?raw=true "Tutorial.")
+
 
 **Notes:**
 * I am NOT a programmer and this is my first Chrome extension. I made extension because I saw a need (for myself) and didn't find anything suitable for what I wanted.
