@@ -7,7 +7,12 @@ Use this Chrome extension for the following:
 
 ![Alt text](/example01.gif?raw=true "Tutorial.")
 
-
+**Notes:**
+* I am NOT a programmer and this is my first Chrome extension. I made extension because I saw a need (for myself) and didn't find anything suitable for what I wanted.
+* I realize this extension is not that great and has a lot of room for improvement.
+* Below I have a basic roadmap of what I intend (hope) to do with this exension.
+* If you have any suggestions or would like to help, you are welcome to send me an email at <mckayc+mclick@gmail.com>.
+* To get the most utility from this extension, you should lower your expectations.
 
 # Road map:
 
@@ -21,9 +26,9 @@ Use this Chrome extension for the following:
 * User can input custom values for colors.
 * User can input custom values for opacities.
 
-**Version 0.4** - Polished extension.
+**✓ Version 0.4** - Polished extension.
 * Icons will be improved and looked better.
-* Options window will actually look nice and only be as big as needed. ~~Popup window instead of full window. (I don't think this is actually possible.)~~
+* Options window will actually look nice(r) and only be as big as needed. ~~Popup window instead of full window. (I don't think this is actually possible.)~~
 * Default settings for extension will make it look nice and negate any need for most people to ever use options.
 
 **Version 0.5** - First release.
@@ -39,7 +44,7 @@ Use this Chrome extension for the following:
 **Version 0.7** - Improve options. ~~No need for manual input.~~
 * Start implementing some of Dallin's code such as right click, left click, middle click and double click.
 * ~~User has the option to use color picker for colors.~~
-* ~~User has the option to use a slider for object size.~~
+* User has the option to use a slider for object size.
 * ~~User has the option to use a slider for opacity.~~
 
 **Version 0.8** - Explore more features. Test features to see if they are useful or not.
@@ -65,8 +70,11 @@ Use this Chrome extension for the following:
 * Find out how to display keypress combinations.
 * Allow user options to toggle this feature.
 * Be able to use on more than just the active page.
+
 ---
 
-**Note:** For the basic framework of this extension, I looked at the Chrome extension "mouse_thing" (https://github.com/jared-schmidt/mouse_thing). For additional code, I enlisted the help of my friends Matt and Ryan as well as my brother Dallin. I am not a programmer and have no idea what I am doing. You should lower your expectations before using this extension.
-
-For the color picker, I used Spectrum (https://bgrins.github.io/spectrum)
+**Credits:**
+* For the basic framework of this extension, I looked at the Chrome extension "mouse_thing" (https://github.com/jared-schmidt/mouse_thing).
+* For the color picker, I used Spectrum (https://bgrins.github.io/spectrum).
+* For the value sliders, I intend to use Simple Slider (http://loopj.com/jquery-simple-slider/) though I have not figured out how to implement this yet.
+* For bug fixes and additional code, I enlisted the help of my friends Matt and Ryan as well as my brother Dallin.
