@@ -15,7 +15,7 @@ Use this Chrome extension for the following:
 **Notes:**
 * I am NOT a programmer and this is my first Chrome extension. I made extension because I saw a need (for myself) and didn't find anything suitable for what I wanted.
 * I realize this extension is not that great and has a lot of room for improvement.
-* Below I have a basic roadmap of what I intend (hope) to do with this exension.
+* Below I have a basic roadmap of what I intend (hope) to do with this extension.
 * If you have any suggestions or would like to help, you are welcome to send me an email at <mckayc+mclick@gmail.com>.
 * To get the most utility from this extension, you should lower your expectations.
 
@@ -63,16 +63,16 @@ Use this Chrome extension for the following:
 * Make any last changes for version 1 release.
 
 **Version 1.0** - Release!
-* Rerelease on Chrom app store.
-* Share exension with coworkers and friends.
-* Write blog post about exension and do some promotion.
+* Rerelease on Chrome app store.
+* Share extension with coworkers and friends.
+* Write blog post about extension and do some promotion.
 * Update roadmap for version 2.0.
 * Buy myself ice cream and/or pizza and celebrate.
 
 ---
 **Version 2.0+** - Start integrating keyboard indicators.
-* Come up with a slick way to show keyboard keypresses.
-* Find out how to display keypress combinations.
+* Come up with a slick way to show keyboard key presses.
+* Find out how to display key press combinations.
 * Allow user options to toggle this feature.
 * Be able to use on more than just the active page.
 

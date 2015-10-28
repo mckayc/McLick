@@ -7,7 +7,6 @@ function save_options() {
     var mouseMoveBorderColor = $('#mouseMoveBorderColor').spectrum("get").toRgbString();
     var mouseMoveBorderSize = document.getElementById('mouseMoveBorderSize').value;
 
-
     var mouseDownColor = $('#mouseDownColor').spectrum("get").toRgbString();
     var mouseDownSize = document.getElementById('mouseDownSize').value;
     var mouseDownBorderColor = $('#mouseDownBorderColor').spectrum("get").toRgbString();
@@ -17,7 +16,6 @@ function save_options() {
     var mouseUpSize = document.getElementById('mouseUpSize').value;
     var mouseUpBorderColor = $('#mouseUpBorderColor').spectrum("get").toRgbString();
     var mouseUpBorderSize = document.getElementById('mouseUpBorderSize').value;
-
 
     chrome.storage.sync.set({
         mouseMoveColor: mouseMoveColor,
@@ -63,20 +61,20 @@ function reset_options() {
     var resetMouseUpBorderSize = '4';
 
     chrome.storage.sync.set({
-        mouseMoveColor: resetMouseMoveColor,
-        mouseMoveSize: resetMouseMoveSize,
-        mouseMoveBorderColor: resetMouseMoveBorderColor,
-        mouseMoveBorderSize: resetMouseMoveBorderSize,
+      mouseMoveColor: 'rgba(255,255,10,0.5)',
+      mouseMoveSize: '50',
+      mouseMoveBorderColor: 'rgba(65,65,190,0.7)',
+      mouseMoveBorderSize: '0',
 
-        mouseDownColor: resetMouseDownColor,
-        mouseDownSize: resetMouseDownSize,
-        mouseDownBorderColor: resetMouseDownBorderColor,
-        mouseDownBorderSize: resetMouseDownBorderSize,
+      mouseDownColor: 'rgba(255,255,255,0)',
+      mouseDownSize: '25',
+      mouseDownBorderColor: 'rgba(64,64,191,0.5)',
+      mouseDownBorderSize: '5',
 
-        mouseUpColor: resetMouseUpColor,
-        mouseUpSize: resetMouseUpSize,
-        mouseUpBorderColor: resetMouseUpBorderColor,
-        mouseUpBorderSize: resetMouseUpBorderSize,
+      mouseUpColor: 'rgba(255,255,255,0)',
+      mouseUpSize: '20',
+      mouseUpBorderColor: 'rgba(65,65,190,0.6)',
+      mouseUpBorderSize: '4',
 
     }, function() {
         // Update status to let user know options were saved to default.
