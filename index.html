@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Mclick by mckayc</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Mclick</h1>
+        <p class="header">Mouse Click Highlighter</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/mckayc/McLick/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/mckayc/McLick/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/mckayc/McLick">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/mckayc">mckayc</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a id="mclick---mouse-click-and-cursor-highlighter-for-screen-recordings" class="anchor" href="#mclick---mouse-click-and-cursor-highlighter-for-screen-recordings" aria-hidden="true"><span class="octicon octicon-link"></span></a>mClick - Mouse Click and Cursor Highlighter for screen recordings.</h1>
+
+<p>Use this Chrome extension for the following:</p>
+
+<ul>
+<li>While doing a screencast recording, this will clearly show where your mouse cursor is and where you click on the page. This can be useful for doing webapp tutorials.</li>
+<li>While doing an online presentation, this can help so that your audience can clearly see where your mouse cursor is.</li>
+<li>If you use Chromecast, this can highlight your mouse cursor to make it easier to spot.</li>
+</ul>
+
+<p><img src="/example01.gif?raw=true" alt="Alt text" title="Tutorial.">
+<img src="/example02.gif?raw=true" alt="Alt text" title="Tutorial.">
+<img src="/example03.gif?raw=true" alt="Alt text" title="Tutorial.">
+<img src="/example04.gif?raw=true" alt="Alt text" title="Tutorial.">
+<img src="/example05.gif?raw=true" alt="Alt text" title="Tutorial."></p>
+
+<p><strong>Notes:</strong></p>
+
+<ul>
+<li>I am NOT a programmer and this is my first Chrome extension. I made extension because I saw a need (for myself) and didn't find anything suitable for what I wanted.</li>
+<li>I realize this extension is not that great and has a lot of room for improvement.</li>
+<li>Below I have a basic roadmap of what I intend (hope) to do with this extension.</li>
+<li>If you have any suggestions or would like to help, you are welcome to send me an email at .</li>
+<li>To get the most utility from this extension, you should lower your expectations.</li>
+</ul>
+
+<h1>
+<a id="road-map" class="anchor" href="#road-map" aria-hidden="true"><span class="octicon octicon-link"></span></a>Road map:</h1>
+
+<p><strong>✓ Version 0.2</strong> - Have a basic functional extension.</p>
+
+<ul>
+<li>Mouse cursor is highlighted when moving on the screen.</li>
+<li>There are mouse click indications for mouse down and mouse up.</li>
+<li>You can turn the extension on and off.</li>
+</ul>
+
+<p><strong>✓ Version 0.3</strong> - Have user input for most basic functions.</p>
+
+<ul>
+<li>User can input custom values for highlight size for all functions (move, click, mouseup, etc).</li>
+<li>User can input custom values for colors.</li>
+<li>User can input custom values for opacities.</li>
+</ul>
+
+<p><strong>✓ Version 0.4</strong> - Polished extension. - Still needs more work</p>
+
+<ul>
+<li>Icons will be improved and looked better.</li>
+<li>Options window will actually look nice(r) and only be as big as needed. <del>Popup window instead of full window. (I don't think this is actually possible.)</del>
+</li>
+<li>Default settings for extension will make it look nice and negate any need for most people to ever use options.</li>
+</ul>
+
+<p><strong>Version 0.5</strong> - First release.</p>
+
+<ul>
+<li>Do thorough testing and bug fixes. Make sure basic functions work as intended in most circumstances.</li>
+<li>Package extension and put it on the Chrome app store.</li>
+<li>Add example gif in this README.md</li>
+</ul>
+
+<p><strong>Version 0.6</strong> - Extended features.</p>
+
+<ul>
+<li>Improve transitions and animations (give user options for these?).</li>
+<li>Come up with something nifty for click and drag. Perhaps a new div shape?</li>
+<li>In options, have live preview for shapes.</li>
+</ul>
+
+<p><strong>Version 0.7</strong> - Improve options. <del>No need for manual input.</del></p>
+
+<ul>
+<li>Start implementing some of Dallin's code such as right click, left click, middle click and double click.</li>
+<li><del>User has the option to use color picker for colors.</del></li>
+<li>User has the option to use a slider for object size.</li>
+<li><del>User has the option to use a slider for opacity.</del></li>
+</ul>
+
+<p><strong>Version 0.8</strong> - Explore more features. Test features to see if they are useful or not.</p>
+
+<ul>
+<li>Have an indicator for scroll up and scroll down. (?)</li>
+<li>Improve animations.</li>
+<li>Have user options to toggle every feature.</li>
+</ul>
+
+<p><strong>Version 0.9</strong> - Bug fixes, code cleanup, and final polish.</p>
+
+<ul>
+<li>Fix all bugs so that the extension works in all likely environments.</li>
+<li>Look over code and clean up what is not necessary. Improve comments to make extension more useful to someone who wants to fork code.</li>
+<li>Make any last changes for version 1 release.</li>
+</ul>
+
+<p><strong>Version 1.0</strong> - Release!</p>
+
+<ul>
+<li>Rerelease on Chrome app store.</li>
+<li>Share extension with coworkers and friends.</li>
+<li>Write blog post about extension and do some promotion.</li>
+<li>Update roadmap for version 2.0.</li>
+<li>Buy myself ice cream and/or pizza and celebrate.</li>
+</ul>
+
+<hr>
+
+<p><strong>Version 2.0+</strong> - Start integrating keyboard indicators.</p>
+
+<ul>
+<li>Come up with a slick way to show keyboard key presses.</li>
+<li>Find out how to display key press combinations.</li>
+<li>Allow user options to toggle this feature.</li>
+<li>Be able to use on more than just the active page.</li>
+</ul>
+
+<hr>
+
+<p><strong>Credits:</strong></p>
+
+<ul>
+<li>For the basic framework of this extension, I looked at the Chrome extension "mouse_thing" (<a href="https://github.com/jared-schmidt/mouse_thing">https://github.com/jared-schmidt/mouse_thing</a>).</li>
+<li>For the color picker, I used Spectrum (<a href="https://bgrins.github.io/spectrum">https://bgrins.github.io/spectrum</a>).</li>
+<li>For the value sliders, I intend to use Simple Slider (<a href="http://loopj.com/jquery-simple-slider/">http://loopj.com/jquery-simple-slider/</a>) though I have not figured out how to implement this yet.</li>
+<li>For bug fixes and additional code, I enlisted the help of my friends Matt and Ryan as well as my brother Dallin.</li>
+</ul>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		          <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-41005067-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
