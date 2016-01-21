@@ -1,7 +1,7 @@
 {
     "name": "McLick",
     "description": "This is an offline Google Chrome extention. This is extension will highlight your mouse cursor and your mouse clicks.",
-    "version": "0.4.5",
+    "version": "0.4.6",
     "permissions": [
         "<all_urls>",
         "storage"

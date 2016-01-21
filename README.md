@@ -31,7 +31,7 @@ Use this Chrome extension for the following:
 * User can input custom values for colors.
 * User can input custom values for opacities.
 
-**✓ Version 0.4** - Polished extension. - Still needs more work
+**✓ Version 0.4** - Polished extension. - Still needs more work Autosave
 * Icons will be improved and looked better.
 * Options window will actually look nice(r) and only be as big as needed. ~~Popup window instead of full window. (I don't think this is actually possible.)~~
 * Default settings for extension will make it look nice and negate any need for most people to ever use options.

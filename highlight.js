@@ -22,10 +22,26 @@ var mouseUpSize = 0;
 var mouseUpBorderColor = '000000';
 var mouseUpBorderSize = 0;
 
-
 function mouseMove(e){
   var x = e.clientX-mouseMoveHighlight.outerWidth()/2;
   var y = e.clientY-mouseMoveHighlight.outerHeight()/2;
+
+
+//Fix so it works if the webpage is removing it from the dom
+  if(mouseMoveHighlight.parent().length == 0) {
+    mouseMoveHighlight = $('<div id="ext-mouse-move"></div>');
+    mouseMoveHighlight.appendTo($('body'));
+  }
+
+  if(mouseDownHighlight.parent().length == 0) {
+    mouseDownHighlight = $('<div id="ext-mouse-down"></div>');
+    mouseDownHighlight.appendTo($('body'));
+  }
+
+  if(mouseUpHighlight.parent().length == 0) {
+    mouseUpHighlight = $('<div id="ext-mouse-up"></div>');
+    mouseUpHighlight.appendTo($('body'));
+  }
 
   chrome.storage.sync.get(null, function(response) {
 
