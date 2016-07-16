@@ -4,6 +4,7 @@ function save_options() {
     // var mouseMoveColor = document.getElementById('mouseMoveColor').value;
     var mouseMoveColor = $('#mouseMoveColor').spectrum("get").toRgbString();
     var mouseMoveSize = document.getElementById('mouseMoveSize').value;
+    // var mouseMoveSize = $("#mouseMoveSize").simpleSlider("get");
     var mouseMoveBorderColor = $('#mouseMoveBorderColor').spectrum("get").toRgbString();
     var mouseMoveBorderSize = document.getElementById('mouseMoveBorderSize').value;
 
@@ -42,6 +43,13 @@ function save_options() {
         }, 750); window.close("userOptions.html");
     });
 }
+
+
+
+
+
+
+
 
 // Resets default settings to chrome.storage
 function reset_options() {

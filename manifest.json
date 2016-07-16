@@ -1,7 +1,7 @@
 {
-    "name": "McLick",
+    "name": "mClick",
     "description": "This is an offline Google Chrome extention. This is extension will highlight your mouse cursor and your mouse clicks.",
-    "version": "0.4.6",
+    "version": "0.4.6.3",
     "permissions": [
         "<all_urls>",
         "storage"
@@ -21,7 +21,7 @@
     "manifest_version": 2,
     "content_scripts": [{
         "matches": ["http://*/*", "https://*/*"],
-        "js": ["jquery-2.1.4.min.js", "highlight.js"],
+        "js": ["jquery/jquery-3.1.0.min.js", "jquery/jquery-ui-1.12.0/jquery-ui.min.js", "highlight.js"],
         "all_frames": true
     }],
     "options_page": "userOptions.html"

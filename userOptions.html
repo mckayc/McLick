@@ -2,13 +2,29 @@
 <html>
 <head><title>Mouse Click Highlighter Options</title>
 
-  <link rel="stylesheet" type="text/css" href="spectrum.css">
-  <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
-  <script type="text/javascript" src="spectrum.js"></script>
+  <!-- Include Simple Slider JavaScript and CSS -->
+  <link href="css/simple-slider.css" rel="stylesheet" type="text/css" />
+  <link href="css/simple-slider-volume.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="css/spectrum.css">
+  <link rel="stylesheet" type="text/css" href="jquery/jquery-ui-1.12.0/jquery-ui.min.js">
+
+
+  <script type="text/javascript" src="jquery/jquery-3.1.0.min.js"></script>
+  <script type="text/javascript" src="jquery/jquery-ui-1.12.0/jquery-ui.css"></script>
+
+  <script type="text/javascript" src="js/spectrum.js"></script>
+  <script src="js/simple-slider.js"></script>
+
+
+
+
+
 
 </head>
 
 <body>
+
+
 <div class='column-left'>
 <h4>Mouse Move</h4>
 <label>Mouse Move Color:</label>
@@ -16,7 +32,10 @@
 <br /><br />
 <label>Mouse Move Size: (Default: 50)</label>
 <input id='mouseMoveSize' type='text' value='' />
-<!-- <input id='mouseMoveSize' type='range' min='0' max='350' step='1' value='' /> -->
+
+
+<!-- <input type="text" data-slider="true" value="50" data-slider-highlight="true" data-slider-theme="volume" id="mouseMoveSize"> -->
+
 <br /><br />
 <label>Mouse Move Border Color:</label>
 <input type='text' id='mouseMoveBorderColor' />
@@ -66,7 +85,7 @@
 <button id="save">Save</button>
 <button id="reset">Reset to Defaults</button>
 
-
 <script src="userOptions.js"></script>
+
 </body>
 </html>
