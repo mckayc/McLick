@@ -1,28 +1,39 @@
+
 {
-    "name": "mClick",
-    "description": "This is an offline Google Chrome extention. This is extension will highlight your mouse cursor and your mouse clicks.",
-    "version": "0.4.6.3",
-    "permissions": [
-        "<all_urls>",
-        "storage"
-    ],
-
-    "icons": { "16": "icon16.png",
-               "48": "icon48.png",
-              "128": "icon128.png" },
-
-    "background": {
-        "persistent": true,
-        "scripts": ["highlight.js", "onOffToggle.js"]
-    },
-    "browser_action": {
-        "default_icon": "off.png"
-    },
-    "manifest_version": 2,
-    "content_scripts": [{
-        "matches": ["http://*/*", "https://*/*"],
-        "js": ["jquery/jquery-3.1.0.min.js", "jquery/jquery-ui-1.12.0/jquery-ui.min.js", "highlight.js"],
-        "all_frames": true
-    }],
-    "options_page": "userOptions.html"
+  "manifest_version": 3,
+  "name": "mClick - Professional Cursor Studio",
+  "version": "1.0",
+  "description": "Professional cursor highlighter with cinematic ghosting and keystroke HUD.",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "action": {
+    "default_title": "mClick Settings",
+    "default_popup": "index.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "commands": {
+    "toggle-highlight": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+H",
+        "mac": "Command+Shift+H"
+      },
+      "description": "Toggle mClick Highlighter"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
 }

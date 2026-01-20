@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mClick - Studio</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --border: #e2e8f0;
+    }
+    body {
+      width: 420px;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      user-select: none;
+      overflow-x: hidden;
+    }
+    header {
+      padding: 16px;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo-container { display: flex; align-items: center; gap: 8px; }
+    .logo-icon { width: 32px; height: 32px; background: #000; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; }
+    .logo-text { font-weight: 900; font-size: 18px; letter-spacing: -0.5px; }
+    
+    .status-toggle { display: flex; align-items: center; gap: 8px; }
+    .switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider-toggle { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #cbd5e1; transition: .4s; border-radius: 34px; }
+    .slider-toggle:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+    input:checked + .slider-toggle { background-color: var(--primary); }
+    input:checked + .slider-toggle:before { transform: translateX(20px); }
+
+    main { padding: 16px; padding-bottom: 24px; }
+    .section { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 16px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+    .section-title { font-size: 10px; font-weight: 900; color: #64748b; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; display: block; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; }
+    
+    .control-group { margin-bottom: 16px; }
+    .control-label { font-size: 11px; font-weight: 700; margin-bottom: 6px; display: flex; justify-content: space-between; color: #475569; }
+    .control-row { display: flex; align-items: center; gap: 12px; }
+    
+    input[type="range"] { flex: 1; height: 6px; background: #e2e8f0; border-radius: 3px; appearance: none; outline: none; }
+    input[type="range"]::-webkit-slider-thumb { appearance: none; width: 16px; height: 16px; background: var(--primary); border-radius: 50%; cursor: pointer; border: 2px solid white; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+    input[type="color"] { width: 34px; height: 34px; border: 2px solid #f1f5f9; border-radius: 6px; padding: 0; background: none; cursor: pointer; transition: 0.2s; }
+    input[type="color"]:hover { transform: scale(1.05); }
+    
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .checkbox-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; background: #f8fafc; border: 1px solid #f1f5f9; border-radius: 8px; font-size: 11px; font-weight: 700; transition: 0.2s; }
+    .checkbox-item:hover { background: #f1f5f9; }
+    
+    .click-config { border-left: 4px solid #e2e8f0; padding-left: 14px; margin-top: 12px; }
+    .click-config.left { border-left-color: #22c55e; }
+    .click-config.right { border-left-color: #ef4444; }
+    .click-config.middle { border-left-color: #a855f7; }
+
+    footer { padding: 16px; display: flex; gap: 12px; background: white; border-top: 1px solid var(--border); position: sticky; bottom: 0; }
+    button { flex: 1; padding: 10px; border-radius: 8px; border: none; font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: 0.2s; }
+    .btn-reset { background: #fee2e2; color: #ef4444; }
+    .btn-reset:hover { background: #fecaca; }
+    .hint { flex: 1.5; background: #0f172a; color: #94a3b8; display: flex; align-items: center; justify-content: center; font-size: 9px; border-radius: 8px; font-weight: 800; }
+  </style>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <div class="logo-icon">m</div>
+      <div class="logo-text">mClick Studio</div>
+    </div>
+    <div class="status-toggle">
+      <span id="statusText" style="font-size: 9px; font-weight: 900; text-transform: uppercase; color: var(--primary);">Active</span>
+      <label class="switch">
+        <input type="checkbox" id="isEnabled" checked>
+        <span class="slider-toggle"></span>
+      </label>
+    </div>
+  </header>
+
+  <main>
+    <div class="section">
+      <span class="section-title">Aperture Optics</span>
+      <div class="control-group">
+        <div class="control-label"><span>Aperture Color & Transparency</span><span id="valOpacity">40%</span></div>
+        <div class="control-row">
+          <input type="color" id="color" value="#fde047">
+          <input type="range" id="opacity" min="0" max="1" step="0.01" value="0.4">
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="control-group">
+          <div class="control-label"><span>Aperture Size</span><span id="valSize">60px</span></div>
+          <input type="range" id="size" min="10" max="250" value="60" style="width: 100%;">
+        </div>
+        <div class="control-group">
+          <div class="control-label"><span>Ray Hardness</span><span id="valRayIntensity">5</span></div>
+          <input type="range" id="rayIntensity" min="0" max="30" value="5" style="width: 100%;">
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="control-label"><span>Cinematic Ghosting (Lag)</span><span id="valGhostingIntensity">0%</span></div>
+        <input type="range" id="ghostingIntensity" min="0" max="1" step="0.01" value="0" style="width: 100%;">
+      </div>
+    </div>
+
+    <div class="section">
+      <span class="section-title">Telemetry HUD</span>
+      <div class="grid-2">
+        <label class="checkbox-item">Modifiers HUD <input type="checkbox" id="showModifierKeys" checked></label>
+        <label class="checkbox-item">Keystroke Echo <input type="checkbox" id="showLastKey" checked></label>
+      </div>
+    </div>
+
+    <div class="section">
+      <span class="section-title">Pulse Interaction Profiles</span>
+      
+      <div class="click-config left">
+        <div class="control-label"><span>Left Click Pulse</span><input type="checkbox" id="enableLeftClick" checked></div>
+        <div class="control-row">
+          <input type="color" id="leftColor" value="#22c55e">
+          <div style="flex: 1;">
+            <div class="control-label" style="margin-bottom: 2px; font-size: 9px;">Thickness</div>
+            <input type="range" id="leftRippleThickness" min="1" max="20" value="3" style="width: 100%;">
+            <div class="control-label" style="margin-top: 4px; margin-bottom: 2px; font-size: 9px;">Expansion</div>
+            <input type="range" id="leftRippleExpansion" min="0.5" max="4" step="0.1" value="1.1" style="width: 100%;">
+          </div>
+        </div>
+      </div>
+
+      <div class="click-config right">
+        <div class="control-label"><span>Right Click Studio</span><input type="checkbox" id="enableRightClick" checked></div>
+        <div class="control-row">
+          <input type="color" id="rightColor" value="#ef4444">
+          <div style="flex: 1;">
+            <div class="control-label" style="margin-bottom: 2px; font-size: 9px;">Thickness</div>
+            <input type="range" id="rightRippleThickness" min="1" max="20" value="3" style="width: 100%;">
+            <div class="control-label" style="margin-top: 4px; margin-bottom: 2px; font-size: 9px;">Expansion</div>
+            <input type="range" id="rightRippleExpansion" min="0.5" max="4" step="0.1" value="1.2" style="width: 100%;">
+          </div>
+        </div>
+      </div>
+
+      <div class="click-config middle">
+        <div class="control-label"><span>Middle Click Pulse</span><input type="checkbox" id="enableMiddleClick" checked></div>
+        <div class="control-row">
+          <input type="color" id="middleColor" value="#a855f7">
+          <div style="flex: 1;">
+            <div class="control-label" style="margin-bottom: 2px; font-size: 9px;">Line Width</div>
+            <input type="range" id="middleRippleThickness" min="1" max="20" value="2" style="width: 100%;">
+            <div class="control-label" style="margin-top: 4px; margin-bottom: 2px; font-size: 9px;">Height Scale</div>
+            <input type="range" id="middleRippleExpansion" min="0.5" max="4" step="0.1" value="1.05" style="width: 100%;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <button id="resetBtn" class="btn-reset">Factory Reset</button>
+    <div class="hint">SHORTCUT: CTRL + SHIFT + H</div>
+  </footer>
+
+  <script src="popup.js"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
