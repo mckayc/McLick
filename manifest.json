@@ -2,8 +2,8 @@
 {
   "manifest_version": 3,
   "name": "mClick - Professional Cursor Studio",
-  "version": "1.0",
-  "description": "Professional cursor highlighter with cinematic ghosting and keystroke HUD.",
+  "version": "2.3.0",
+  "description": "Professional cursor highlighter with editable presets, spotlight mode, laser pointer, magnifier lens, and keystroke HUD.",
   "permissions": [
     "storage",
     "activeTab"
@@ -16,6 +16,10 @@
   "action": {
     "default_title": "mClick Settings",
     "default_popup": "index.html"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
   },
   "background": {
     "service_worker": "background.js",
@@ -33,7 +37,9 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content.js"]
+      "js": ["content.js"],
+      "all_frames": true,
+      "run_at": "document_idle"
     }
   ]
 }

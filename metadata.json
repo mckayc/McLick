@@ -1,5 +1,5 @@
 {
-  "name": "mClick - v2.0",
-  "description": "Production-grade cursor highlighter for creators. Features dual-color physics ripples, sun-ray optics, and keyboard modifier HUD.",
+  "name": "mClick - v2.3",
+  "description": "Production-grade cursor highlighter for creators. Features editable presets, dual-color physics ripples, sun-ray optics, spotlight mode, laser pointer, magnifier lens, and keyboard modifier HUD.",
   "requestFramePermissions": []
 }

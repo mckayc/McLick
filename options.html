@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mClick Settings</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+    header {
+      padding: 20px 32px;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo-container { display: flex; align-items: center; gap: 10px; }
+    .logo-icon { width: 36px; height: 36px; background: #000; border-radius: 9px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 18px; }
+    .logo-text { font-weight: 900; font-size: 20px; letter-spacing: -0.5px; }
+    .logo-sub { font-size: 11px; color: #64748b; font-weight: 600; }
+
+    .status-toggle { display: flex; align-items: center; gap: 10px; }
+    .switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider-toggle { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #cbd5e1; transition: .4s; border-radius: 34px; }
+    .slider-toggle:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+    input:checked + .slider-toggle { background-color: var(--primary); }
+    input:checked + .slider-toggle:before { transform: translateX(20px); }
+
+    main { max-width: 980px; margin: 0 auto; padding: 24px 32px 48px; }
+
+    .preset-row { display: flex; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+    .preset-btn { position: relative; flex: 1; min-width: 140px; padding: 12px; border-radius: 10px; border: 1px solid var(--border); background: white; cursor: pointer; font-weight: 800; font-size: 12px; text-align: left; transition: border-color 0.15s, background-color 0.15s, transform 0.15s; }
+    .preset-btn small { display: block; font-weight: 500; color: #64748b; font-size: 10px; margin-top: 2px; }
+    .preset-btn:hover { border-color: var(--primary); background: #eef2ff; }
+    .preset-btn.active { border-color: var(--primary); background: #eef2ff; box-shadow: 0 0 0 2px var(--primary); }
+    .preset-btn.active::before {
+      content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 4px;
+      border-radius: 0 3px 3px 0; background: var(--primary);
+    }
+    @keyframes preset-pop {
+      0% { transform: scale(1); }
+      45% { transform: scale(1.05); box-shadow: 0 0 0 4px rgba(79,70,229,0.3); }
+      100% { transform: scale(1); }
+    }
+    .preset-btn.just-applied { animation: preset-pop 0.45s ease; }
+    .preset-status { font-size: 11px; font-weight: 700; color: #64748b; margin-bottom: 16px; min-height: 16px; transition: color 0.2s; }
+    .preset-status.applied { color: #16a34a; }
+
+    .preset-btn.add-preset {
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      border-style: dashed; color: var(--primary); font-weight: 900;
+    }
+    .preset-btn.add-preset:hover { background: #eef2ff; }
+
+    .new-preset-form { display: flex; gap: 8px; margin-bottom: 24px; }
+    .new-preset-form input[type="text"] {
+      flex: 1; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border);
+      font-size: 12px; font-family: inherit;
+    }
+    .new-preset-form input[type="text"]:focus { outline: 2px solid var(--primary); outline-offset: -1px; }
+
+    .preset-manage-row { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid #f1f5f9; }
+    .preset-manage-row:last-child { border-bottom: none; }
+    .preset-manage-row input[type="text"] {
+      flex: 1; padding: 8px 10px; border-radius: 6px; border: 1px solid var(--border);
+      font-size: 12px; font-family: inherit;
+    }
+    .preset-manage-row input[type="text"]:focus { outline: 2px solid var(--primary); outline-offset: -1px; }
+    .icon-btn {
+      width: 30px; height: 30px; border-radius: 6px; border: 1px solid var(--border);
+      background: white; cursor: pointer; font-size: 13px; display: flex; align-items: center;
+      justify-content: center; flex-shrink: 0; transition: 0.15s;
+    }
+    .icon-btn:hover { background: #f1f5f9; }
+    .icon-btn.danger:hover { background: #fee2e2; border-color: #fecaca; color: #ef4444; }
+    .preset-manage-empty { font-size: 11px; color: #94a3b8; padding: 4px 0; }
+
+    .grid-sections { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 760px) { .grid-sections { grid-template-columns: 1fr; } }
+
+    .section { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+    .section-title { font-size: 11px; font-weight: 900; color: #64748b; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; display: block; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; }
+
+    .control-group { margin-bottom: 16px; }
+    .control-group:last-child { margin-bottom: 0; }
+    .control-label { font-size: 11px; font-weight: 700; margin-bottom: 6px; display: flex; justify-content: space-between; color: #475569; }
+    .control-row { display: flex; align-items: center; gap: 12px; }
+
+    input[type="range"] { flex: 1; width: 100%; height: 6px; background: #e2e8f0; border-radius: 3px; appearance: none; outline: none; }
+    input[type="range"]::-webkit-slider-thumb { appearance: none; width: 16px; height: 16px; background: var(--primary); border-radius: 50%; cursor: pointer; border: 2px solid white; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+    input[type="color"] { width: 34px; height: 34px; border: 2px solid #f1f5f9; border-radius: 6px; padding: 0; background: none; cursor: pointer; transition: 0.2s; flex-shrink: 0; }
+    input[type="color"]:hover { transform: scale(1.05); }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .checkbox-item { display: flex; justify-content: space-between; align-items: center; padding: 10px; background: #f8fafc; border: 1px solid #f1f5f9; border-radius: 8px; font-size: 11px; font-weight: 700; transition: 0.2s; }
+    .checkbox-item:hover { background: #f1f5f9; }
+
+    .click-config { border-left: 4px solid #e2e8f0; padding-left: 14px; margin-top: 12px; }
+    .click-config:first-of-type { margin-top: 0; }
+    .click-config.left { border-left-color: #22c55e; }
+    .click-config.right { border-left-color: #ef4444; }
+    .click-config.middle { border-left-color: #a855f7; }
+
+    .hint-text { font-size: 11px; color: #64748b; line-height: 1.6; }
+    .hint-text b { color: var(--text); }
+
+    .data-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    button.btn { padding: 10px 16px; border-radius: 8px; border: none; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; transition: 0.2s; }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: #4338ca; }
+    .btn-secondary { background: #f1f5f9; color: var(--text); }
+    .btn-secondary:hover { background: #e2e8f0; }
+    .btn-reset { background: #fee2e2; color: #ef4444; }
+    .btn-reset:hover { background: #fecaca; }
+
+    #importStatus { font-size: 11px; font-weight: 700; margin-top: 10px; min-height: 14px; }
+    #importStatus.ok { color: #16a34a; }
+    #importStatus.error { color: #ef4444; }
+
+    footer { max-width: 980px; margin: 0 auto; padding: 0 32px 32px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #94a3b8; }
+    footer a { color: var(--primary); text-decoration: none; font-weight: 700; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <div class="logo-icon">m</div>
+      <div>
+        <div class="logo-text">mClick Settings</div>
+        <div class="logo-sub">Professional Cursor Studio</div>
+      </div>
+    </div>
+    <div class="status-toggle">
+      <span id="statusText" style="font-size: 10px; font-weight: 900; text-transform: uppercase; color: var(--primary);">Active</span>
+      <label class="switch">
+        <input type="checkbox" id="isEnabled">
+        <span class="slider-toggle"></span>
+      </label>
+    </div>
+  </header>
+
+  <main>
+    <div class="preset-row" id="presetRow">
+      <!-- Preset buttons injected by options.js -->
+    </div>
+    <div class="preset-status" id="presetStatus"></div>
+    <div class="new-preset-form" id="newPresetForm" hidden>
+      <input type="text" id="newPresetName" placeholder="Name your new preset…" maxlength="40">
+      <button class="btn btn-primary" id="confirmSavePreset">Create</button>
+      <button class="btn btn-secondary" id="cancelSavePreset">Cancel</button>
+    </div>
+
+    <div class="grid-sections">
+      <div>
+        <div class="section">
+          <span class="section-title">Aperture Optics</span>
+          <div class="control-group">
+            <div class="control-label"><span>Aperture Color &amp; Transparency</span><span id="valOpacity">40%</span></div>
+            <div class="control-row">
+              <input type="color" id="color" value="#fde047">
+              <input type="range" id="opacity" min="0" max="1" step="0.01" value="0.4">
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="control-group">
+              <div class="control-label"><span>Aperture Size</span><span id="valSize">60px</span></div>
+              <input type="range" id="size" min="10" max="250" value="60">
+            </div>
+            <div class="control-group">
+              <div class="control-label"><span>Ray Hardness</span><span id="valRayIntensity">5</span></div>
+              <input type="range" id="rayIntensity" min="0" max="30" value="5">
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="control-label"><span>Cinematic Ghosting (Lag)</span><span id="valGhostingIntensity">0%</span></div>
+            <input type="range" id="ghostingIntensity" min="0" max="1" step="0.01" value="0">
+          </div>
+        </div>
+
+        <div class="section">
+          <span class="section-title">Spotlight Mode</span>
+          <div class="checkbox-item" style="margin-bottom: 16px;">
+            Dim the page around the cursor
+            <input type="checkbox" id="spotlightMode">
+          </div>
+          <div class="control-group">
+            <div class="control-label"><span>Spotlight Radius</span><span id="valSpotlightRadius">150px</span></div>
+            <input type="range" id="spotlightRadius" min="40" max="400" value="150">
+          </div>
+          <div class="control-group">
+            <div class="control-label"><span>Dim Strength</span><span id="valSpotlightOpacity">60%</span></div>
+            <input type="range" id="spotlightOpacity" min="0" max="0.95" step="0.01" value="0.6">
+          </div>
+        </div>
+
+        <div class="section">
+          <span class="section-title">Telemetry HUD</span>
+          <div class="grid-2">
+            <label class="checkbox-item">Modifiers HUD <input type="checkbox" id="showModifierKeys" checked></label>
+            <label class="checkbox-item">Keystroke Echo <input type="checkbox" id="showLastKey" checked></label>
+          </div>
+          <div class="checkbox-item" style="margin-top: 16px;">
+            Scroll Direction Indicator
+            <input type="checkbox" id="showScrollIndicator" checked>
+          </div>
+        </div>
+
+        <div class="section">
+          <span class="section-title">Idle Auto-Hide</span>
+          <div class="checkbox-item" style="margin-bottom: 16px;">
+            Fade out when the mouse and keyboard are idle
+            <input type="checkbox" id="autoHideEnabled">
+          </div>
+          <div class="control-group">
+            <div class="control-label"><span>Idle Delay</span><span id="valAutoHideDelay">3s</span></div>
+            <input type="range" id="autoHideDelay" min="1" max="30" step="1" value="3">
+          </div>
+        </div>
+
+        <div class="section">
+          <span class="section-title">Laser Pointer</span>
+          <div class="checkbox-item" style="margin-bottom: 16px;">
+            Hold <b>L</b> to leave a fading comet trail
+            <input type="checkbox" id="laserEnabled" checked>
+          </div>
+          <div class="control-group">
+            <div class="control-label"><span>Trail Color</span></div>
+            <div class="control-row">
+              <input type="color" id="laserColor" value="#ef4444">
+              <div style="flex: 1;">
+                <div class="control-label"><span>Dot Size</span><span id="valLaserSize">9px</span></div>
+                <input type="range" id="laserSize" min="4" max="24" value="9">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <span class="section-title">Magnifier Lens</span>
+          <div class="checkbox-item" style="margin-bottom: 16px;">
+            Hold <b>Z</b> to zoom in around the cursor
+            <input type="checkbox" id="magnifierEnabled" checked>
+          </div>
+          <div class="control-group">
+            <div class="control-label"><span>Zoom Level</span><span id="valMagnifierZoom">2.5x</span></div>
+            <input type="range" id="magnifierZoom" min="1.5" max="5" step="0.1" value="2.5">
+          </div>
+          <div class="control-group">
+            <div class="control-label"><span>Lens Size</span><span id="valMagnifierSize">180px</span></div>
+            <input type="range" id="magnifierSize" min="80" max="320" value="180">
+          </div>
+          <p class="hint-text">A live snapshot of the page, zoomed around the cursor. Videos, canvases (charts/games), and embedded iframes can't be captured this way and will look blank or unmagnified inside the lens.</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="section">
+          <span class="section-title">Pulse Interaction Profiles</span>
+
+          <div class="click-config left">
+            <div class="control-label"><span>Left Click Pulse</span><input type="checkbox" id="enableLeftClick" checked></div>
+            <div class="control-row">
+              <input type="color" id="leftColor" value="#22c55e">
+              <div style="flex: 1;">
+                <div class="control-label" style="margin-bottom: 2px; font-size: 9px;">Thickness</div>
+                <input type="range" id="leftRippleThickness" min="1" max="20" value="3">
+                <div class="control-label" style="margin-top: 4px; margin-bottom: 2px; font-size: 9px;">Expansion</div>
+                <input type="range" id="leftRippleExpansion" min="0.5" max="4" step="0.1" value="1.1">
+              </div>
+            </div>
+          </div>
+
+          <div class="click-config right">
+            <div class="control-label"><span>Right Click Studio</span><input type="checkbox" id="enableRightClick" checked></div>
+            <div class="control-row">
+              <input type="color" id="rightColor" value="#ef4444">
+              <div style="flex: 1;">
+                <div class="control-label" style="margin-bottom: 2px; font-size: 9px;">Thickness</div>
+                <input type="range" id="rightRippleThickness" min="1" max="20" value="3">
+                <div class="control-label" style="margin-top: 4px; margin-bottom: 2px; font-size: 9px;">Expansion</div>
+                <input type="range" id="rightRippleExpansion" min="0.5" max="4" step="0.1" value="1.2">
+              </div>
+            </div>
+          </div>
+
+          <div class="click-config middle">
+            <div class="control-label"><span>Middle Click Pulse</span><input type="checkbox" id="enableMiddleClick" checked></div>
+            <div class="control-row">
+              <input type="color" id="middleColor" value="#a855f7">
+              <div style="flex: 1;">
+                <div class="control-label" style="margin-bottom: 2px; font-size: 9px;">Line Width</div>
+                <input type="range" id="middleRippleThickness" min="1" max="20" value="2">
+                <div class="control-label" style="margin-top: 4px; margin-bottom: 2px; font-size: 9px;">Height Scale</div>
+                <input type="range" id="middleRippleExpansion" min="0.5" max="4" step="0.1" value="1.05">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <span class="section-title">Manage Presets</span>
+          <p class="hint-text" style="margin-bottom: 12px;">Rename a custom preset, save your current settings over it, or delete it. Built-in presets show up here once you've edited them, with a one-click restore to factory. To create a new preset, tune your settings and use "+ New Preset" above — any edit you make while a preset is active also saves into it automatically.</p>
+          <div id="managePresetsList"></div>
+        </div>
+
+        <div class="section">
+          <span class="section-title">Sync &amp; Backup</span>
+          <p class="hint-text">Settings save to <b>chrome.storage.sync</b>, so they follow you to any browser where you're signed into the same Chrome/Google account. A local copy is always kept as a backup in case sync is unavailable.</p>
+        </div>
+
+        <div class="section">
+          <span class="section-title">Data Management</span>
+          <div class="data-actions">
+            <button class="btn btn-secondary" id="exportBtn">Export Settings</button>
+            <button class="btn btn-secondary" id="importBtn">Import Settings</button>
+            <input type="file" id="importFile" accept="application/json" hidden>
+            <button class="btn btn-secondary" id="restorePresetsBtn" title="Revert Default, Screencast, Teaching, and Minimal back to their factory settings">Restore Default Presets</button>
+            <button class="btn btn-reset" id="resetBtn" title="Reset your current live settings to the original factory look">Factory Reset</button>
+          </div>
+          <div id="importStatus"></div>
+        </div>
+
+        <div class="section">
+          <span class="section-title">Keyboard Shortcut</span>
+          <p class="hint-text">Toggle the highlighter globally with <b>Ctrl+Shift+H</b> (<b>Cmd+Shift+H</b> on Mac).</p>
+          <button class="btn btn-secondary" id="customizeShortcut" style="margin-top: 4px;">Customize Shortcut</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span id="versionText"></span>
+    <span>mClick — Professional Cursor Studio</span>
+  </footer>
+
+  <script src="options.js"></script>
+</body>
+</html>
