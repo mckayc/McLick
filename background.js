@@ -53,10 +53,15 @@ chrome.storage.onChanged.addListener((changes) => {
   }
 });
 
-// Set default state and icon on installation/startup
-chrome.runtime.onInstalled.addListener(() => {
-  chrome.storage.local.set({ isEnabled: true });
-  updateIcon(true);
+// Enable the extension only on a brand-new install. Updates must preserve the user's choice.
+chrome.runtime.onInstalled.addListener(({ reason }) => {
+  if (reason === 'install') {
+    chrome.storage.local.set({ isEnabled: true });
+  }
+
+  chrome.storage.local.get(['isEnabled'], (res) => {
+    updateIcon(res.isEnabled !== undefined ? res.isEnabled : true);
+  });
 });
 
 // Sync icon on startup based on last saved state

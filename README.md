@@ -21,6 +21,15 @@ When you are ready to upload to the Chrome Web Store, create a `.zip` file conta
 ## Shortcuts
 - **Ctrl + Shift + H**: Toggle the highlighter ON/OFF globally.
 - **Mac Users**: `Cmd + Shift + H`.
+- To choose a different shortcut, open the popup and select **Customize Shortcut**. Chrome manages extension shortcut assignments at `chrome://extensions/shortcuts`.
+
+## Outside the Browser
+
+Chrome content scripts can only draw over web pages. They cannot render a cursor overlay over desktop applications or capture a global operating-system shortcut. For that, the highlighter engine would need a companion desktop app built with Electron, Tauri, or a native platform API. The extension could then communicate with that app through native messaging or a local WebSocket.
+
+## State Persistence
+
+The ON/OFF state is stored in `chrome.storage.local`, so it survives browser restarts and extension updates. A new installation starts enabled; changing the toggle persists the new state.
 
 ## Troubleshooting Icons
 If the icon does not change when toggled:

@@ -1,6 +1,7 @@
 (function() {
   let settings = null;
-  let isEnabled = true;
+  // Stay hidden until the saved state has been loaded.
+  let isEnabled = false;
   let mouseX = 0, mouseY = 0;
   let ghostX = 0, ghostY = 0;
   let activeButton = 'none';

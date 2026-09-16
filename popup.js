@@ -97,4 +97,12 @@ document.addEventListener('DOMContentLoaded', () => {
     updateUI(currentSettings);
     save();
   });
+
+  document.getElementById('customizeShortcut').addEventListener('click', () => {
+    if (typeof chrome !== 'undefined' && chrome.tabs) {
+      chrome.tabs.create({ url: 'chrome://extensions/shortcuts' });
+    } else {
+      window.open('chrome://extensions/shortcuts', '_blank');
+    }
+  });
 });
